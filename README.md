@@ -32,7 +32,7 @@ We limit the pool of possible solutions to a certain set (set of functions).
 For example, we want to predict temperature y from pressure x with only 1 observation. 
 We restrict ourselves to the set of linear functions:
 
-$`y≃\hat y=f(x)=ax`$
+[latex] - `y \approx \hat{y}=f(x)=wx`
 
 As a rule, each solution in this set can be uniquely determined using parameters..
 In our example, this is the parameter *a*
@@ -41,7 +41,7 @@ We choose a loss function that clearly demonstrates our desire to find a solutio
 
 In our example, this will be the standard deviation, which takes on high values if our prediction is far from the true value..
 
-$`L(y,\hat y)=(y - \hat y)^2`$
+[latex] - `L \left( y, \hat{y} \right) = \left( y - \hat{y} \right)^2`
 
 Thus, the search for our optimal solution will be reduced to finding a solution for which the loss function is minimal. 
 But since the function will depend on the parameter, we can say that the goal is to find such parameters for which the loss 
@@ -49,14 +49,14 @@ function is minimal.
 
 In our example, formally the task will sound like this:
 
-$`arg \min\limits_{\hat y} L(y,\hat y)=arg \min\limits_{a} L(y,ax)`$
+[latex] - `\arg \min_{\hat{y}} L \left( y, \hat{y} \right) = \arg \min_{w} L(y, wx)`
 
 The fact that the loss function depends on the parameters will allow us to calculate the derivatives and 
 use optimization methods (including gradient descent) to find the optimal values for the parameters
 
 In our example:
 
-$`{\delta L \over {\delta a}} = -2a(y-ax) = 0 \Rightarrow a=\{y/x, 0\}`$
+[latex] - `\frac{\partial L}{\partial w}=-2w(y-wx)=0 \Rightarrow w=\lbrace \frac{y}{x}, 0 \rbrace`
 
 Often it will be possible to look at the same problem mathematically from a different angle by solving 
 it in an alternative formulation. This will open up new meanings in the solution, which will help you understand 
@@ -75,7 +75,7 @@ Suppose we have a set of inputs *X*  which are corresponded to outputs *y*.
 The goal is to find a mapping function f from *X* to *y*. 
 In regression problems $`y ∈ R`$ and our $`X ∈ R^n`$. In other words:
 
-$`f: X \rightarrow y`$, where $`y \in R`$ is target, *X* is training data.
+[latex] - `f: X \rightarrow y, \text{ where } y \in \mathbb{R} \text{ is a target, } X \text{ is training data }`
 
 There are a lot of examples for real-world regression problems. Let’s consider the most popular:
 * Predict the age of a viewer watching TV or video channels.
@@ -84,11 +84,11 @@ There are a lot of examples for real-world regression problems. Let’s consider
 * Predict the temperature at any location inside a building using weather data, time, door sensors, etc.
 
 In case of linear regression the key property is that the expected value of the output is assumed to be a linear 
-function of the input, $`f(x) = w^Tx`$. This makes the model easy to fit the data and easy to interpret. 
+function of the input, [latex] - `f(\mathbf{x}) = \mathbf{w}^T \mathbf{x} + b` . This makes the model easy to fit the data and easy to interpret. 
 
 For regression, the most common choice is to use quadratic loss, or $`l2`$ loss, or MSE – mean squared error:
 
-$`l2(y, \hat y) = (y - \hat y)^2`$
+[latex] - `l_2 \left(y, \hat{y} \right) = \left( y - \hat{y} \right)^2`
 
 where $`\hat y`$ is the estimation of the model. We use loss to minimize errors and to fit model. 
 Let’s dive into linear regression model.
@@ -100,22 +100,22 @@ regression model. Main goal of this model is to estimate the linear function of 
 
 We can fit this data using a simple linear regression model of the form 
 
-$`f(x; \theta) = b + wx`$
+[latex] - `f(x;\boldsymbol{\theta}) = b + \mathbf{w} x`
 
-where *w* is the slope, *b* is the offset, and $`\theta = (w,b)`$ are all the parameters of the model. 
+where [latex] - `\mathbf{w}` is the slope, [latex] - `b` is the offset (or bias), and [latex] - `\boldsymbol{\theta} = (\mathbf{w}, b)` are all the parameters of the model. 
+By adjusting [latex] - `\boldsymbol{\theta}`, we can minimize the sum of squared errors until we find the least squares solution:
 
-By adjusting $`\theta`$, we can minimize the sum of squared errors until we find the least squares solution:
+[latex] - `\hat{\boldsymbol{\theta}} = \arg \min_{\boldsymbol{\theta}} \text{MSE}(\boldsymbol{\theta})`
 
-![](misc/images/mse.jpg)
+[latex] - `\text{MSE}(\boldsymbol{\theta}) = \frac{1}{N}\sum_{n=1}^{N} \left( y_n - f(x_n; \boldsymbol{\theta})\right)^2`
 
 where MSE is mean squared error.
 
 Lets deep with formal way, linear regression model could be wrote as:
 
-![](misc/images/linear_regression_model.jpg)
+[latex] - `f(x;\boldsymbol{\theta}) = \mathbf{w}^T \mathbf{x} + b + \epsilon = \sum_{i=1}^D w_i x_i + b + \epsilon`
 
-where $`w^Tx`$ represents the inner or scalar product between the input vector *x* and the model’s weight vector *w*, 
-and *ε* is the residual error between our linear predictions and the true response.
+where [latex] - ` \mathbf{w}^T \mathbf{x}` represents the inner or scalar product between the input vector [latex] - `\mathbf{x}` and the model's weight vector [latex] - `\mathbf{w}`, [latex] - `b` is the offset (or bias), and [latex] - `\epsilon` is the residual error between our linear predictions and the true response.
 
 From a mathematical point of view, we can define our task as minimizing MSE. 
 To solve these problems we can use optimization methods such as gradient descent or Newton's method 
@@ -134,13 +134,13 @@ To do it we should iteratively repeat next steps:
 
 1. Calculate the value of gradient
 
-    ![](misc/images/gradient.jpg)
+    [latex] - `\frac{\partial L}{\partial \boldsymbol{\theta}} = \nabla L = \left( \begin{array}{c} \frac{\partial L}{\partial \theta_1} \\ \dots \\ \frac{\partial L}{\partial \theta_n} \end{array} \right)`
 
 2. Update parameter values using formula:
 
-    ![](misc/images/update_formula.jpg)
+    [latex] - `\boldsymbol{\theta}^{i+1} = \boldsymbol{\theta}^i - \gamma \nabla L \left( \boldsymbol{\theta}^i \right)`
     
-    Where  is the learning rate that defines how far we should go and where 0 is usually defined randomly.
+    Where [latex] - `\gamma` is the learning rate that defines how far we should go and where 0 is usually defined randomly.
 
 ![](misc/images/gradient_descent.jpg)
 
@@ -198,7 +198,7 @@ that is called regularization.
 Usually the regularization comes from the fact that it simply consumes the additive in the loss function, 
 which depends on the parameters of the model.
 
-![](misc/images/regularization_first_formula.jpg)
+[latex] - `\min_{\boldsymbol{\theta}} \sum_{i=1}^N L \left( f(x_i, \boldsymbol{\theta}), y_i \right) + \lambda R(\boldsymbol{\theta})`
 
 The idea of this addition is that the models do not seek to learn complex patterns and try to simplify the 
 solution. In other words, if the model begins to overfit in the process of finding a solution, then the addition in 
@@ -207,11 +207,11 @@ the error function will begin to increase and this will force the model to stop 
 For linear regression, 2 variants of these additives are usually used:
 * L2 - then the linear model is called the Ridge model 
 
-    ![](misc/images/ridge_model.jpg)
+    [latex] - `R(\boldsymbol{\theta}) = \| \boldsymbol{\theta}\|_2^2 = \sum_{i=1}^d \theta_i^2`
 
 * L1 - then the linear model is called Lasso model
 
-    ![](misc/images/lasso_model.jpg)
+    [latex] - `R(\boldsymbol{\theta}) = \| \boldsymbol{\theta}\|_1 = \sum_{i=1}^d |\theta_i|`
 
 * Sklearn has also a separate class when these 2 regularizations are combined and such a model is called Elastic
 

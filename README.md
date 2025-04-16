@@ -180,7 +180,7 @@ Let us dive into quality metrics for estimating regression problems. We have alr
 
 Let's say we're solving a customer income problem, so our target variable is continuous. And the MAE of our model is 5000. How can we estimate if our model is good enough?
 
-Take a break and think for a few minutes. Here we will discuss a few ways to solve this problem. The first and simplest is to compare our model with native forecasts. For example, we could find the mean of our target variable and set it as the prediction for a test sample for a whole set of customers. Finally, compare the MAE of our model and the native prediction. Here we recommend finding the best native prediction for MSE and MAE. Also think about how we could improve the native prediction for better quality. 
+Take a break and think for a few minutes. Here we will discuss a few ways to solve this problem. The first and simplest is to compare our model with naive forecasts. For example, we could find the mean of our target variable and set it as the prediction for a test sample for a whole set of customers. Finally, compare the MAE of our model and the naive prediction. Here we recommend finding the best naive prediction for MSE and MAE. Also think about how we could improve the native prediction for better quality. 
 
 The second way we will discuss here is to convert relative metrics to absolute metrics. The Mean Absolute Percentage Error (MAPE) is one of the widely used regressive problem metrics. MAPE is the sum of the individual absolute errors divided by the demand (each period separately). It is the average of the percentage errors. Compared to MAE, MAPE has an exact range. For better understanding, consider some examples and measure different metrics, also we recommend to define MSLE and R squared coefficient.
 
@@ -271,7 +271,7 @@ The goal of this task is to gain a deep understanding of linear models for regre
 
 ## Chapter V. Task
 
-We will continue our practice with a problem from Kaggle.com. In this chapter, we will implement Implement all the models described above. Measure quality metrics on training and test parts. Detect and regularize overfitted models. And dive deeper with native model estimation and comparison.
+We will continue our practice with a problem from Kaggle.com. In this chapter, we will implement Implement all the models described above. Measure quality metrics on training and test parts. Detect and regularize overfitted models. And dive deeper with naive model estimation and comparison.
 
 1. Answer the questions
    1. Derive an analytical solution to the regression problem. Use a vector form of the equation.
@@ -287,11 +287,11 @@ We will continue our practice with a problem from Kaggle.com. In this chapter, w
 3. Intro data analysis part 2
    1. Let's generate additional features for better model quality. Consider a column called "Features". It consists of a list of highlights of the current flat. 
    2. Remove unused symbols ([,], ', ", and space) from the column.
-   3. Split values in each row with the separator "," and collect the result in one huge list for the whole dataset. You can use DataFrame.iterrows().
+   3. Get all values in each list and collect the result in one huge list for the whole dataset. You can use DataFrame.iterrows().
    4. How many unique values does a result list contain?
    5. Let's get acquainted with the new library — Collections. With this package you could effectively get quantity statistics about your data. 
    6. Count the most popular functions from our huge list and take the top 20 for this moment.
-   7. If everything is correct, you should get next values:  'Elevator', 'HardwoodFloors', 'CatsAllowed', 'DogsAllowed', 'Doorman', 'Dishwasher', 'NoFee', 'LaundryinBuilding', 'FitnessCenter', 'Pre-War', 'LaundryinUnit', 'RoofDeck', 'OutdoorSpace', 'DiningRoom', 'HighSpeedInternet', 'Balcony', 'SwimmingPool', 'LaundryInBuilding', 'NewConstruction', 'Terrace'.
+   7. If everything is correct, you should get next values:  'Elevator', 'CatsAllowed', 'HardwoodFloors', 'DogsAllowed', 'Doorman', 'Dishwasher', 'NoFee', 'LaundryinBuilding', 'FitnessCenter', 'Pre-War', 'LaundryinUnit', 'RoofDeck', 'OutdoorSpace', 'DiningRoom', 'HighSpeedInternet', 'Balcony', 'SwimmingPool', 'LaundryInBuilding', 'NewConstruction', 'Terrace'.
    8. Now create 20 new features based on the top 20 values: 1 if the value is in the "Feature" column, otherwise 0.
    9. Extend our feature set with 'bathrooms', 'bedrooms', 'interest_level' and create a special variable feature_list with all feature names. Now we have 23 values. All models should be trained on these 23 features.
 
@@ -331,7 +331,7 @@ We will continue our practice with a problem from Kaggle.com. In this chapter, w
    5. Analyze the results and select the best model according to your opinion.
    6. Additionally try different alpha parameters of regularization in algorithms, choose the best one and analyze results.
 
-9. Native models
+9. Naive models
    1. Calculate the mean and median metrics from the previous lesson and add the results to the final dataframe.
 
 10. Compare results

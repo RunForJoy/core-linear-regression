@@ -298,13 +298,14 @@ We will continue our practice with a problem from Kaggle.com. In this chapter, w
    9. Extend our feature set with 'bathrooms', 'bedrooms' and create a special variable feature_list with all feature names. Now we have 22 values. All models should be trained on these 22 features.
 
 4. Models implementation — Linear regression
-   1. Implement a Python class for a linear regression algorithm with two basic methods — fit and predict. Use stochastic gradient descent (SGD) to find optimal model weights. For better understanding, we recommend implementing separate versions of the algorithm with the analytical solution and non-stochastic gradient descent under the hood.
-   2. What is determenistic model? Make SGD determenistic.
-   3. Define the R squared (R2) coefficient and implement a function to calculate it.
-   4. Make predictions with your algorithm and estimate the model with MAE, RMSE and R2 metrics.
-   5. Initialize LinearRegression() from sklearn.linear_model, fit the model, and predict the training and test parts as in the previous lesson.
-   6. Compare the quality metrics and make sure the difference is small (between your implementations and sklearn).
-   7. Store the metrics as in the previous lesson in a table with columns model, train, test for MAE table, RMSE table, and R2 coefficient.
+   1. Initialize the random number generator with a seed of 21.
+   2. Implement a Python class for a linear regression algorithm with two basic methods — fit and predict. Use stochastic gradient descent (SGD) to find optimal model weights. For better understanding, we recommend implementing separate versions of the algorithm with the analytical solution and non-stochastic gradient descent under the hood.
+   3. What is determenistic model? Make SGD determenistic.
+   4. Define the R squared (R2) coefficient and implement a function to calculate it.
+   5. Make predictions with your algorithm and estimate the model with MAE, RMSE and R2 metrics.
+   6. Initialize LinearRegression() from sklearn.linear_model, fit the model, and predict the training and test parts as in the previous lesson.
+   7. Compare the quality metrics and make sure the difference is small (between your implementations and sklearn).
+   8. Store the metrics as in the previous lesson in a table with columns model, train, test for MAE table, RMSE table, and R2 coefficient.
 
 5. Regularized models implementation — Ridge, Lasso, ElasticNet    
    1. Implement Ridge, Lasso, ElasticNet algorithms: extend the loss function with L2, L1 and both regularizations accordingly.

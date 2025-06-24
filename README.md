@@ -29,27 +29,27 @@ We limit the pool of possible solutions to a certain set (set of functions).
 
 For example, we want to predict temperature y from pressure x with only 1 observation. We limit ourselves to the set of linear functions:
 
-$$y \approx \hat{y}=f(x)=wx$$
+$$y \approx \hat{y}=f(x)=wx.$$
 
 Usually, each solution in this set can be uniquely determined by parameters. In our example, this is the parameter *a*.
 
 We choose a loss function that clearly demonstrates our desire to find a solution that satisfies the objective of the problem.
 
-In our example, this is the standard deviation, which takes on high values when our prediction is far from the true value.
+In our example, this is the standard deviation, which takes on high values when our prediction is far from the true value:
 
-$$L \left( y, \hat{y} \right) = \left( y - \hat{y} \right)^2$$
+$$L \left( y, \hat{y} \right) = \left( y - \hat{y} \right)^2.$$
 
 Thus, the search for our optimal solution is reduced to finding a solution for which the loss function is minimal. However, since the function will depend on the parameter, we can say that the goal is to find such parameters for which the loss function is minimal.
 
 In our example, the formal problem will look like this:
 
-$$\arg \min_{\hat{y}} L \left( y, \hat{y} \right) = \arg \min_{w} L(y, wx)$$
+$$\arg \min_{\hat{y}} L \left( y, \hat{y} \right) = \arg \min_{w} L(y, wx).$$
 
 The fact that the loss function depends on the parameters allows us to use derivatives and optimization methods (including gradient descent) to find the optimal values for the parameters.
 
 In our example:
 
-$$\frac{\partial L}{\partial w}=-2w(y-wx)=0 \Rightarrow w=\lbrace \frac{y}{x}, 0 \rbrace$$
+$$\frac{\partial L}{\partial w}=-2w(y-wx)=0 \Rightarrow w=\lbrace \frac{y}{x}, 0 \rbrace.$$
 
 Often it will be possible to look at the same problem mathematically from a different angle by solving it in an alternative formulation. This will open up new meanings in the solution that will help you better understand the the details even better. Therefore, we strongly recommend that you do not dwell on the materials mentioned in this course, and periodically improve your understanding of one approach or another.
 
@@ -61,7 +61,7 @@ In this chapter, we will discuss regression problems that limit the pool of poss
 
 Suppose we have a set of inputs *X* that correspond to outputs *y*. The goal is to find a mapping function f from *X* to *y*. In regression problems, $`y ∈ R`$ and our $`X ∈ R^n`$. In other words:
 
-$$f: X \rightarrow y, \text{ where } y \in \mathbb{R} \text{ is a target, } X \text{ is training data }$$
+$$f: X \rightarrow y, \text{ where } y \in \mathbb{R} \text{ is a target, } X \text{ is training data }.$$
 
 There are many examples of real-world regression problems. Let's look at the most popular ones:
 * Predicting the age of a viewer watching TV or video channels.
@@ -69,13 +69,15 @@ There are many examples of real-world regression problems. Let's look at the mos
 * Predicting the amount of taxis required due to certain weather conditions.
 * Predicting the temperature at any location inside a building using weather data, time, door sensors, etc.
 
-In the case of linear regression, the key property is that the expected value of the output is assumed to be a linear function of the input. function of the input, $$f(\mathbf{x}) = \mathbf{w}^T \mathbf{x} + b$$ . This makes the model easy to fit to the data and easy to interpret. 
+In the case of linear regression, the key property is that the expected value of the output is assumed to be a linear function of the input. function of the input, 
+$$f(\mathbf{x}) = \mathbf{w}^T \mathbf{x} + b.$$
+This makes the model easy to fit to the data and easy to interpret. 
 
-For regression, the most common choice is to use quadratic loss, or $`l2`$ loss, or MSE — mean squared error:
+For regression, the most common choice is to use quadratic loss, or $l2$ loss, or MSE — mean squared error:
 
-$$l_2 \left(y, \hat{y} \right) = \left( y - \hat{y} \right)^2$$
+$$l_2 \left(y, \hat{y} \right) = \left( y - \hat{y} \right)^2.$$
 
-where $`\hat y`$ is the estimate of the model. We use loss to minimize error and to fit the model. Let's dive into the linear regression model.
+where $\hat y$ is the estimate of the model. We use loss to minimize error and to fit the model. Let's dive into the linear regression model.
 
 ### Linear Regression
 
@@ -83,11 +85,11 @@ One of the most widely used, but not always effective, algorithms for solving re
 
 We can fit this data with a simple linear regression model of the form:
 
-$$f(x;\boldsymbol{\theta}) = b + \mathbf{w} x$$
+$$f(x;\boldsymbol{\theta}) = b + \mathbf{w} x,$$
 
-where $$\mathbf{w}$$ is the slope, $$b$$ is the offset (or bias), and $$\boldsymbol{\theta} = (\mathbf{w}, b)$$ are all parameters of the model. By adjusting $$\boldsymbol{\theta}$$, we can minimize the sum of squared errors until we find the least squares solution:
+where $\mathbf{w}$ is the slope, $b$ is the offset (or bias), and $\boldsymbol{\theta} = (\mathbf{w}, b)$ are all parameters of the model. By adjusting $\boldsymbol{\theta}$, we can minimize the sum of squared errors until we find the least squares solution:
 
-$$\hat{\boldsymbol{\theta}} = \arg \min_{\boldsymbol{\theta}} \text{MSE}(\boldsymbol{\theta})$$
+$$\hat{\boldsymbol{\theta}} = \arg \min_{\boldsymbol{\theta}} \text{MSE}(\boldsymbol{\theta}),$$
 
 $$\text{MSE}(\boldsymbol{\theta}) = \frac{1}{N}\sum_{n=1}^{N} \left( y_n - f(x_n; \boldsymbol{\theta})\right)^2$$
 
@@ -97,7 +99,7 @@ Lets deep with formal way, linear regression model could be wrote as:
 
 $$f(x;\boldsymbol{\theta}) = \mathbf{w}^T \mathbf{x} + b + \epsilon = \sum_{i=1}^D w_i x_i + b + \epsilon$$
 
-where $$ \mathbf{w}^T \mathbf{x}$$ is the inner or scalar product between the input vector $$\mathbf{x}$$ and the model's weight vector $$\mathbf{w}$$, $$b$$ is the offset (or bias), and $$\epsilon$$ is the residual error between our linear predictions and the true response.
+where $ \mathbf{w}^T \mathbf{x}$ is the inner or scalar product between the input vector $\mathbf{x}$ and the model's weight vector $\mathbf{w}$, $b$ is the offset (or bias), and $\epsilon$ is the residual error between our linear predictions and the true response.
 
 Mathematically, we can define our task as minimizing the MSE. To solve these problems, we can use optimization methods like gradient descent or Newton's method or even write down an analytical solution that involves matrix inversion (after you complete your first task, which we will discuss later in this chapter — you will find that matrix inversion is a heavy computational operation). Your first task will be to find an analytical solution to the regression problem.
 
@@ -109,15 +111,15 @@ To do this, we should iteratively repeat the next steps:
 
 1. Calculate the value of gradient
 
-    $$\frac{\partial L}{\partial \boldsymbol{\theta}} = \nabla L = \left( \begin{array}{c} \frac{\partial L}{\partial \theta_1} \\ \dots \\ \frac{\partial L}{\partial \theta_n} \end{array} \right)$$
+    $$\frac{\partial L}{\partial \boldsymbol{\theta}} = \nabla L = \left( \begin{array}{c} \frac{\partial L}{\partial \theta_1} \\ \dots \\ \frac{\partial L}{\partial \theta_n} \end{array} \right).$$
 
 2. Update parameter values using formula:
 
-    $$\boldsymbol{\theta}^{i+1} = \boldsymbol{\theta}^i - \gamma \nabla L \left( \boldsymbol{\theta}^i \right)$$
+    $$\boldsymbol{\theta}^{i+1} = \boldsymbol{\theta}^i - \gamma \nabla L \left( \boldsymbol{\theta}^i \right),$$
     
-    Where $$\gamma$$ is the learning rate that defines how far we should go and where 0 is usually defined randomly.
+    where $\gamma$ is the learning rate that defines how far we should go and where 0 is usually defined randomly.
 
-![](misc/images/gradient_descent.jpg)
+![gradient_descent](./misc/images/gradient_descent.jpg)
 
 There are many modifications of gradient descent for more accurate results and faster computation. 
 We consider the primary modification — stochastic gradient descent. Strength of this method is that we stochastically choose an object (or a set of objects) and calculate gradient only on this object. It helps to save a lot of time, but qualitative efficiency doesn't have huge dropdowns. 
@@ -132,7 +134,7 @@ Therefore, when fitting highly flexible models, we must be careful not to overfi
 
 This is illustrated in the figure below, where we see that using a high degree polynomial results in a curve that is very "wiggly". The true function is unlikely to have such extreme fluctuations. Therefore, using such a model could result in accurate predictions of future outputs.
 
-![](misc/images/graphics.jpg)
+![graphics](./misc/images/graphics.jpg)
 
 An underfit model is the opposite of an overfit model — the model that does not learn any dependencies from the training data set, or learns them in the wrong way. This again results in poor performance on the test dataset. For example, we need to classify handwritten digits, and it happens that all images of 8's have 67 dark pixels, while all other examples don't. 
 
@@ -140,11 +142,11 @@ The model might decide to exploit this random regularity, and thus correctly cla
 
 In other words, we need to adjust the model to balance between these 2 cases. This is also known as bias-variance tradeoff. The error we produce when fitting and evaluating the model can be divided into 2 parts (actually 3, but we can't influence the third): bias and variance. To understand what each type of error means, see the figure from [Wikipedia](https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff):
 
-![](misc/images/low_low.jpg)
-![](misc/images/high_low.jpg)
+![low_low](./misc/images/low_low.jpg)
+![high_low](./misc/images/high_low.jpg)
 
-![](misc/images/low_high.jpg)
-![](misc/images/high_high.jpg)
+![low_high](./misc/images/low_high.jpg)
+![high_high](./misc/images/high_high.jpg)
 
 > By Bernhard Thiery — Own work, CC BY-SA 3.0
 
@@ -180,7 +182,7 @@ Let us dive into quality metrics for estimating regression problems. We have alr
 
 Let's say we're solving a customer income problem, so our target variable is continuous. And the MAE of our model is 5000. How can we estimate if our model is good enough?
 
-Take a break and think for a few minutes. Here we will discuss a few ways to solve this problem. The first and simplest is to compare our model with naive forecasts. For example, we could find the mean of our target variable and set it as the prediction for a test sample for a whole set of customers. Finally, compare the MAE of our model and the naive prediction. Here we recommend finding the best naive prediction for MSE and MAE. Also think about how we could improve the native prediction for better quality. 
+Take a break and think for a few minutes. Here we will discuss a few ways to solve this problem. The first and simplest is to compare our model with naive forecasts. For example, we could find the mean of our target variable and set it as the prediction for a test sample for a whole set of customers. Finally, compare the MAE of our model and the naive prediction. Here we recommend finding the best naive prediction for MSE and MAE. Also think about how we could improve the naive prediction for better quality. 
 
 The second way we will discuss here is to convert relative metrics to absolute metrics. The Mean Absolute Percentage Error (MAPE) is one of the widely used regressive problem metrics. MAPE is the sum of the individual absolute errors divided by the demand (each period separately). It is the average of the percentage errors. Compared to MAE, MAPE has an exact range. For better understanding, consider some examples and measure different metrics, also we recommend to define MSLE and R squared coefficient.
 
@@ -188,70 +190,70 @@ The second way we will discuss here is to convert relative metrics to absolute m
 
 Let us look at linear regression from the probability point of view and we can rewrite the model with the connection between linear regression and Gaussians in the following form:
 
-![](misc/images/linear_regression_and_gaussian.jpg)
+![linear_regression_and_gaussian](./misc/images/linear_regression_and_gaussian.jpg)
 
-where $`N(µ, \sigma^2)`$ is a **Gaussian** or **normal** distribution with µ being the **mean** and $`\sigma^2`$ being the **variance**.
+where $N(µ, \sigma^2)$ is a **Gaussian** or **normal** distribution with µ being the **mean** and $\sigma^2$ being the **variance**.
 
-This makes it clear that the model is a **conditional probability density function**. In the simplest case, we assume that µ is a linear function of *x*, so $`µ= w^Tx`$, and that the noise is fixed, $`\sigma^2(x) = \sigma^2`$.
+This makes it clear that the model is a **conditional probability density function**. In the simplest case, we assume that $\mu$ is a linear function of $x$, so $µ= w^Tx$, and that the noise is fixed, $\sigma^2(x) = \sigma^2$.
 
-In this case, $`\theta = (w,\sigma^2)`$ are the **parameters** of the model. 
+In this case, $\theta = (w,\sigma^2)$ are the **parameters** of the model. 
 
 For example, suppose the input is 1-dimensional. We can write the expected response as:
 
-$`µ(x)= w_0+ w_1x = w^Tx`$
+$$µ(x)= w_0+ w_1x = w^Tx,$$
 
-where $`w_0`$ is the intercept or bias term, $`w_1`$ is the slope, and we have defined the vector *x = (1, x)*.
+where $w_0$ is the intercept or bias term, $w_1$ is the slope, and we have defined the vector $x = (1, x)$.
 
 Let's try to figure out how to determine the parameters of the linear regression model.
 
 A common way to estimate the parameters of a statistical model is to compute MLE — Maximum Likelihood Estimation. 
 MLE is a method for estimating an unknown parameter by maximizing a Likelihood function, which we can define as:
 
-$`\hat \theta = arg \max\limits_{\theta} L(\theta) = arg \max\limits_{\theta} \prod_{i=1}^l P(y_i|x_i, \theta)`$
+$$\hat \theta = arg \max\limits_{\theta} L(\theta) = arg \max\limits_{\theta} \prod_{i=1}^l P(y_i|x_i, \theta)$$
 
-where $`L(\theta)`$ — Likelihood function.
+where $L(\theta)$ — Likelihood function.
 
 It is common to assume that the training examples are independent and identically distributed. This means that we can write the log likelihood as follows:
 
-![](misc/images/log_likelihood.jpg)
+![log_likelihood](./misc/images/log_likelihood.jpg)
 
 Instead of maximizing the log likelihood, we can equivalently minimize the negative log likelihood or NLL:
 
-![](misc/images/nll.jpg)
+![nll](./misc/images/nll.jpg)
 
 The NLL formulation is sometimes more convenient because many optimization software packages are designed to find the 
 to find the minima of functions rather than the maxima. Now let us apply the MLE method to linear regression setting. Substituting the definition of Gaussian into the above, we find that the log likelihood is given by:
 
-![](misc/images/new_log_likelihood.jpg)
+![new_log_likelihood](./misc/images/new_log_likelihood.jpg)
 
 RSS stands for residual sum of squares and is given by:
 
-![](misc/images/rss.jpg)
+![rss](./misc/images/rss.jpg)
 
 The RSS is also called the sum of squared errors, or SSE, and SSE/N is called the mean squared error, or MSE. It can also be written as the square of the ℓ2 norm of the vector of residual errors:
 
-![](misc/images/sse.jpg)
+![sse](./misc/images/sse.jpg)
 
 Linear regression can be made to model nonlinear relationships by replacing x with a nonlinear function of the inputs, φ(x). That is, we use
 
-![](misc/images/non_linear.jpg)
+![non_linear](./misc/images/non_linear.jpg)
 
 where could be degrees of features:
 
-![](misc/images/feature_degrees.jpg)
+![feature_degrees](./misc/images/feature_degrees.jpg)
 
-Maximum likelihood estimation can lead to overfitting. In some cases, our task — minimizing RSS — could have infinite solutions. Can you give us some examples of such cases? Take a break and think. Answer: well, several common cases for this problem — high correlation features and cases when dimension of features is more than dimension of object. Then there are problems with the huge value of weights and overfitting. To solve this problem, we can add regularization parameters to our minimization equation. There are two basic regularization parameters, ℓ2 and ℓ1. 
+Maximum likelihood estimation can lead to overfitting. In some cases, our task — minimizing RSS — could have infinite solutions. Can you give us some examples of such cases? Take a break and think. Answer: well, several common cases for this problem — high correlation features and cases when dimension of features is more than dimension of object. Then there are problems with the huge value of weights and overfitting. To solve this problem, we can add regularization parameters to our minimization equation. There are two basic regularization parameters, ℓ2 and ℓ1: 
 
-$`l2 = ||w||_2 = \sum_{l=1}^d w_i^2`$  
-$`l1 = ||w||_1 = \sum_{l=1}^d |w_i|`$
+$$l2 = ||w||_2 = \sum_{l=1}^d w_i^2,$$
+$$l1 = ||w||_1 = \sum_{l=1}^d |w_i|.$$
 
 From a probability point of view, we can define the regularization by MAP (Maximum A Posterior estimate) estimation with a zero-mean Gaussian prior on the weights, 
 
-![](misc/images/ridge_regression.jpg)
+![ridge_regression](./misc/images/ridge_regression.jpg)
 
 This is called ridge regression. More specifically, we compute the MAP estimate as follows: 
 
-![](misc/images/map.jpg)
+![map](./misc/images/map.jpg)
 
 > Source: [Kevin Murphy, Probabilistic Machine Learning: An Introduction](https://probml.github.io/pml-book/book1.html)
 
@@ -271,7 +273,7 @@ The goal of this task is to gain a deep understanding of linear models for regre
 
 ## Chapter V. Task
 
-We will continue our practice with a problem from Kaggle.com. In this chapter, we will implement Implement all the models described above. Measure quality metrics on training and test parts. Detect and regularize overfitted models. And dive deeper with naive model estimation and comparison.
+We will continue our practice with a problem from Kaggle.com. In this chapter, we will implement all the models described above. Measure quality metrics on training and test parts. Detect and regularize overfitted models. And dive deeper with naive model estimation and comparison.
 
 1. Answer the questions
    1. Derive an analytical solution to the regression problem. Use a vector form of the equation.
@@ -293,15 +295,16 @@ We will continue our practice with a problem from Kaggle.com. In this chapter, w
    6. Count the most popular functions from our huge list and take the top 20 for this moment.
    7. If everything is correct, you should get next values:  'Elevator', 'CatsAllowed', 'HardwoodFloors', 'DogsAllowed', 'Doorman', 'Dishwasher', 'NoFee', 'LaundryinBuilding', 'FitnessCenter', 'Pre-War', 'LaundryinUnit', 'RoofDeck', 'OutdoorSpace', 'DiningRoom', 'HighSpeedInternet', 'Balcony', 'SwimmingPool', 'LaundryInBuilding', 'NewConstruction', 'Terrace'.
    8. Now create 20 new features based on the top 20 values: 1 if the value is in the "Feature" column, otherwise 0.
-   9. Extend our feature set with 'bathrooms', 'bedrooms', 'interest_level' and create a special variable feature_list with all feature names. Now we have 23 values. All models should be trained on these 23 features.
+   9. Extend our feature set with 'bathrooms', 'bedrooms' and create a special variable feature_list with all feature names. Now we have 22 values. All models should be trained on these 22 features.
 
 4. Models implementation — Linear regression
-   1. Implement a Python class for a linear regression algorithm with two basic methods — fit and predict. Use stochastic gradient descent to find optimal model weights. For better understanding, we recommend implementing separate versions of the algorithm with the analytical solution and non-stochastic gradient descent under the hood.
-   2. Define the R squared (R2) coefficient and implement a function to calculate it.
-   3. Make predictions with your algorithm and estimate the model with MAE, RMSE and R2 metrics.
-   4. Initialize LinearRegression() from sklearn.linear_model, fit the model, and predict the training and test parts as in the previous lesson.
-   5. Compare the quality metrics and make sure the difference is small (between your implementations and sklearn).
-   6. Store the metrics as in the previous lesson in a table with columns model, train, test for MAE table, RMSE table, and R2 coefficient.
+   1. Implement a Python class for a linear regression algorithm with two basic methods — fit and predict. Use stochastic gradient descent (SGD) to find optimal model weights. For better understanding, we recommend implementing separate versions of the algorithm with the analytical solution and non-stochastic gradient descent under the hood.
+   2. What is determenistic model? Make SGD determenistic.
+   3. Define the R squared (R2) coefficient and implement a function to calculate it.
+   4. Make predictions with your algorithm and estimate the model with MAE, RMSE and R2 metrics.
+   5. Initialize LinearRegression() from sklearn.linear_model, fit the model, and predict the training and test parts as in the previous lesson.
+   6. Compare the quality metrics and make sure the difference is small (between your implementations and sklearn).
+   7. Store the metrics as in the previous lesson in a table with columns model, train, test for MAE table, RMSE table, and R2 coefficient.
 
 5. Regularized models implementation — Ridge, Lasso, ElasticNet    
    1. Implement Ridge, Lasso, ElasticNet algorithms: extend the loss function with L2, L1 and both regularizations accordingly.
@@ -313,19 +316,19 @@ We will continue our practice with a problem from Kaggle.com. In this chapter, w
 6. Feature normalization
    1. First, write several examples of why and where feature normalization is mandatory and vice versa.
    2. Let's consider the first of the classical normalization methods — MinMaxScaler. Write a mathematical formula for this method.
-   3. Implement your own function for MinMaxScaler feature normalization.
+   3. Implement your own function or class for MinMaxScaler feature normalization.
    4. Initialize MinMaxScaler() from sklearn.preprocessing.
    5. Compare the feature normalization with your own method and with sklearn.
    6. Repeat the steps from b to e for another normalization method StandardScaler.
 
-7. Fit models with normalization
+7. Fit custom and sklearn models with normalized data
    1. Fit all models — Linear Regression, Ridge, Lasso, and ElasticNet — with MinMaxScaler.
    2. Fit all models — Linear Regression, Ridge, Lasso, and ElasticNet — with StandardScaler.
    3. Add all results to our dataframe with metrics on samples.
 
 8. Overfit models
    1. Let's look at an overfitted model in practice. From theory, you know that polynomial regression is easy to overfit. So let's create a toy example and see how regularization works in real life.
-   2. In the previous lesson, we created polynomial features with degree 10. Here we repeat these steps from the previous lesson, remembering that we have only 3 basic features — 'bathrooms', 'bedrooms', ''interest_level'.
+   2. In the previous lesson, we created polynomial features with degree 10. Here we repeat these steps from the previous lesson, remembering that we have only 3 basic features — 'bathrooms', 'bedrooms', 'interest_level'.
    3. And train and fit all our implemented algorithms — Linear Regression, Ridge, Lasso, and ElasticNet — on a set of polynomial features.
    4. Store the results of the quality metrics in the result dataframe.
    5. Analyze the results and select the best model according to your opinion.
@@ -342,7 +345,7 @@ We will continue our practice with a problem from Kaggle.com. In this chapter, w
 11. Addition task
     1. There are some tricks with the target variable for better model quality. If we have a distribution with a heavy tail, you can use a monotone function to "improve" the distribution. In practice, you can use logarithmic functions. We recommend that you do this exercise and compare the results. But don't forget to do the inverse transformation if you want to compare metrics.
     2. The next trick is outliers. The angle of the linear regression line depends strongly on outliers. And often you should remove these points from !allert! only training data. You should explain why they were removed from the training sample only.  We recommend that you do this exercise and compare the results.
-    3. It will also be a useful exercise to implement a linear regression algorithm with batch training.
+    3. It will also be a useful exercise to implement a linear regression algorithm with batch and mini-batch training or analytical solution (as mentioned in 4.1).
 
 ### Submission
 

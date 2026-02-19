@@ -53,7 +53,7 @@ The fact that the loss function depends on the parameters allows us to use deriv
 
 In our example:
 
-$$\frac{\partial L}{\partial w}=-2w(y-wx)=0 \Rightarrow w=\lbrace \frac{y}{x}, 0 \rbrace$$
+$$\frac{\partial L}{\partial w}=-2x(y-wx)=0 \Rightarrow w=\lbrace \frac{y}{x} \rbrace$$
 
 Often it will be possible to look at the same problem mathematically from a different angle by solving it in an alternative formulation. This will open up new meanings in the solution that will help you better understand the the details even better. Therefore, we strongly recommend that you do not dwell on the materials mentioned in this course, and periodically improve your understanding of one approach or another.
 

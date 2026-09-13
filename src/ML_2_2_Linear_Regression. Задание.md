@@ -823,19 +823,18 @@ $$
 Например:
 
 $$
-x
-\longrightarrow
-(x,x^2,x^3)
+x \longrightarrow (x, x^2, x^3)
 $$
-
 позволяет учитывать полиномиальную зависимость;
 
 $$
-x
-\longrightarrow
-(\sin x,\cos x)
+x \longrightarrow (\log x, \exp(x), \sqrt{x})
 $$
+позволяет учитывать степенные и экспоненциальные зависимости;
 
+$$
+x \longrightarrow (\sin x, \cos x)
+$$
 позволяет учитывать периодические зависимости;
 
 $$
@@ -863,31 +862,4 @@ $$
 | L2 / Ridge | $\|\mathbf y-X\boldsymbol{\beta}\|_2^2+\lambda\|\boldsymbol{\beta}\|_2^2$ | $\hat{\boldsymbol{\beta}}=(X^TX+\lambda I)^{-1}X^T\mathbf y$ |
 | L1 / Lasso | $\|\mathbf y-X\boldsymbol{\beta}\|_2^2+\lambda\|\boldsymbol{\beta}\|_1$ | Численная оптимизация |
 | Нелинейные зависимости | Используем преобразование $\phi(X)$ | Та же модель для новых признаков |
-
-Таким образом:
-
-$$
-\boxed{
-\text{OLS: точное аналитическое решение}
-}
-$$
-
-$$
-\boxed{
-\text{L2: аналитическое решение с }+\lambda I
-}
-$$
-
-$$
-\boxed{
-\text{L1: разреженные коэффициенты и отбор признаков}
-}
-$$
-
-$$
-\boxed{
-\text{Нелинейность: преобразуем признаки и применяем ту же модель}
-}
-$$
-
 

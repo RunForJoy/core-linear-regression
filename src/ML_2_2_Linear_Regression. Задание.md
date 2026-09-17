@@ -124,9 +124,7 @@ $$
 В векторной форме эту сумму можно записать как скалярное произведение вектора ошибок самого на себя:
 
 $$
-L(\boldsymbol{\beta})
-=
-\mathbf e^T\mathbf e.
+L(\boldsymbol{\beta})=\mathbf e^T\mathbf e.
 $$
 ​
 
@@ -139,12 +137,7 @@ $$
 получаем:
 
 $$
-\boxed{
-L(\boldsymbol{\beta})
-=
-(\mathbf y-X\boldsymbol{\beta})^T
-(\mathbf y-X\boldsymbol{\beta})
-}.
+\boxed{L(\boldsymbol{\beta})=(\mathbf y-X\boldsymbol{\beta})^T(\mathbf y-X\boldsymbol{\beta})}
 $$
 
 Здесь транспонирование необходимо для того, чтобы из вектора-столбца получить вектор-строку.

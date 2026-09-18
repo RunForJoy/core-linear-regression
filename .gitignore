@@ -1,6 +1,6 @@
 *.xlsx
 *questions*.md
-*copy.md
+*copy*.md
 gradientLossFunc.md
 .venv
 *.pdf

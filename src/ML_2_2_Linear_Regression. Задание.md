@@ -284,10 +284,10 @@ $$
 При L2-регуляризации к функции потерь добавляется штраф за большие значения коэффициентов:
 
 $$
-L_{L2}(\boldsymbol{\beta}) = \|\mathbf y-X\boldsymbol{\beta}\|_2^2
-+
-\lambda\|\boldsymbol{\beta}\|_2^2
+L_{L2}(\boldsymbol{\beta}) = \|\mathbf{y} - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_2^2
 $$
+
+
 
 Здесь:
 

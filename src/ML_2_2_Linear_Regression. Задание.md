@@ -159,18 +159,7 @@ $$
 Тогда:
 
 $$
-\mathbf e^T\mathbf e
-=
-\begin{pmatrix}
-e_1&e_2&e_3
-\end{pmatrix}
-\begin{pmatrix}
-e_1\\
-e_2\\
-e_3
-\end{pmatrix}
-=
-e_1^2+e_2^2+e_3^2.
+\mathbf e^T\mathbf e = \begin{pmatrix} e_1 & e_2 & e_3 \end{pmatrix} \begin{pmatrix} e_1 \\ e_2 \\ e_3 \end{pmatrix} = e_1^2 + e_2^2 + e_3^2.
 $$
 
 Таким образом, $\mathbf e^T\mathbf e$ действительно является суммой квадратов ошибок.
@@ -182,35 +171,28 @@ $$
 Запишем функцию потерь:
 
 $$
-L(\boldsymbol{\beta})
-=
-(\mathbf y-X\boldsymbol{\beta})^T
+L(\boldsymbol{\beta}) = (\mathbf y-X\boldsymbol{\beta})^T
 (\mathbf y-X\boldsymbol{\beta}).
 $$
+
 
 Используем [[5. Транспонирование матрицы#Свойство 3 Транспонирование произведения матриц|свойство транспонирования]]:
 
 $$
-(X\boldsymbol{\beta})^T
-=
-\boldsymbol{\beta}^TX^T.
+(X\boldsymbol{\beta})^T = \boldsymbol{\beta}^TX^T.
 $$
 
 Тогда:
 
 $$
-L(\boldsymbol{\beta})
-=
-(\mathbf y^T-\boldsymbol{\beta}^TX^T)
+L(\boldsymbol{\beta}) = (\mathbf y^T-\boldsymbol{\beta}^TX^T)
 (\mathbf y-X\boldsymbol{\beta}).
 $$
 
 Раскрываем скобки:
 
 $$
-L(\boldsymbol{\beta})
-=
-\mathbf y^T\mathbf y
+L(\boldsymbol{\beta}) = \mathbf y^T\mathbf y
 -\mathbf y^TX\boldsymbol{\beta}
 -\boldsymbol{\beta}^TX^T\mathbf y
 +\boldsymbol{\beta}^TX^TX\boldsymbol{\beta}.
@@ -221,12 +203,8 @@ $$
 #### Для этого берём [[ML_2_3_Linear_Regression_берём производную по вектору бетта|производную по вектору бетта]] и приравниваем её к нулю:
 
 $$
-\frac{\partial L}{\partial\boldsymbol{\beta}}
-=
--2X^T\mathbf y
-+
-2X^TX\boldsymbol{\beta}
-=0.
+\frac{\partial L}{\partial\boldsymbol{\beta}} = -2X^T\mathbf y
++ 2X^TX\boldsymbol{\beta} =0.
 $$
 
 Делим обе части на $2$:

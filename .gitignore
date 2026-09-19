@@ -5,6 +5,7 @@ gradientLossFunc.md
 .venv
 *.pdf
 *copy.ipynb
+*copy*.ipynb
 # Prerequisites
 *.d
 

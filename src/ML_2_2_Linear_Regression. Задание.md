@@ -218,48 +218,40 @@ $$
 
 Это уравнение называется **нормальным уравнением**.
 
-#### Решение нормального уравнения
+### Решение нормального уравнения
 
 Если матрица $X^TX$ обратима, умножаем обе части слева на $(X^TX)^{-1}$:
 
 $$
-(X^TX)^{-1}X^TX\boldsymbol{\beta}
-=
-(X^TX)^{-1}X^T\mathbf y.
+(X^TX)^{-1}X^TX\boldsymbol{\beta} = (X^TX)^{-1}X^T\mathbf{y}
 $$
 
-Так как
+Так как 
 
 $$
-(X^TX)^{-1}X^TX=I,
+(X^TX)^{-1}X^TX = I,
 $$
-
 
 получаем:
 
 $$
-I\boldsymbol{\beta}
-=
-(X^TX)^{-1}X^T\mathbf y.
+I\boldsymbol{\beta} = (X^TX)^{-1}X^T\mathbf{y}
 $$
 
 А поскольку:
 
 $$
-I\boldsymbol{\beta}=\boldsymbol{\beta},
+I\boldsymbol{\beta} = \boldsymbol{\beta},
 $$
-> [!success]- почему?
->Единичная матрица I при умножении на любой вектор возвращает тот же вектор без изменений. Это основное свойство единичной матрицы — она играет роль "единицы" в матричной алгебре, как число 1 в обычной арифметике.
+
+> Единичная матрица $I$ при умножении на любой вектор возвращает тот же вектор без изменений. Это основное свойство единичной матрицы — она играет роль "единицы" в матричной алгебре, как число 1 в обычной арифметике.
 
 то:
 
 $$
-\boxed{
-\hat{\boldsymbol{\beta}}
-=
-(X^TX)^{-1}X^T\mathbf y
-}
+\boxed{\hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf{y}}
 $$
+
 
 Это и есть **аналитическое решение задачи линейной регрессии методом наименьших квадратов**.
 
@@ -279,9 +271,7 @@ $$
 Без регуляризации функция потерь:
 
 $$
-L(\boldsymbol{\beta})
-=
-\|\mathbf y-X\boldsymbol{\beta}\|_2^2.
+L(\boldsymbol{\beta}) = \|\mathbf y-X\boldsymbol{\beta}\|_2^2
 $$
 
 При регуляризации к ней добавляется штраф за величину коэффициентов.
@@ -294,11 +284,9 @@ $$
 При L2-регуляризации к функции потерь добавляется штраф за большие значения коэффициентов:
 
 $$
-L_{L2}(\boldsymbol{\beta})
-=
-\|\mathbf y-X\boldsymbol{\beta}\|_2^2
+L_{L2}(\boldsymbol{\beta}) = \|\mathbf y-X\boldsymbol{\beta}\|_2^2
 +
-\lambda\|\boldsymbol{\beta}\|_2^2.
+\lambda\|\boldsymbol{\beta}\|_2^2
 $$
 
 Здесь:
@@ -312,9 +300,7 @@ $$
 Норма вектора в квадрате:
 
 $$
-\|\boldsymbol{\beta}\|_2^2
-=
-\beta_0^2+\beta_1^2+\dots+\beta_p^2.
+\|\boldsymbol{\beta}\|_2^2 = \beta_0^2+\beta_1^2+\dots+\beta_p^2.
 $$
 
 Обычно свободный коэффициент $\beta_0$ не регуляризуют. В этом случае штраф применяется только к $\beta_1,\dots,\beta_p$.
@@ -322,12 +308,11 @@ $$
 Если для простоты записать штраф через весь вектор $\boldsymbol{\beta}$, получаем:
 
 $$
-L_{L2}(\boldsymbol{\beta})
-=
+L_{L2}(\boldsymbol{\beta}) =
 (\mathbf y-X\boldsymbol{\beta})^T
 (\mathbf y-X\boldsymbol{\beta})
 +
-\lambda\boldsymbol{\beta}^T\boldsymbol{\beta}.
+\lambda\boldsymbol{\beta}^T\boldsymbol{\beta}
 $$
 
 Мы уже знаем производную первого слагаемого:
@@ -337,35 +322,30 @@ $$
 \left[
 (\mathbf y-X\boldsymbol{\beta})^T
 (\mathbf y-X\boldsymbol{\beta})
-\right]
-=
+\right] =
 -2X^T\mathbf y
 +
-2X^TX\boldsymbol{\beta}.
+2X^TX\boldsymbol{\beta}
 $$
 
 Для второго слагаемого:
 
 $$
-\boldsymbol{\beta}^T\boldsymbol{\beta}
-=
-\beta_0^2+\beta_1^2+\dots+\beta_p^2.
+\boldsymbol{\beta}^T\boldsymbol{\beta} = \beta_0^2+\beta_1^2+\dots+\beta_p^2
 $$
 
 Производная:
 
 $$
 \frac{\partial}{\partial\boldsymbol{\beta}}
-(\boldsymbol{\beta}^T\boldsymbol{\beta})
-=
+(\boldsymbol{\beta}^T\boldsymbol{\beta}) =
 2\boldsymbol{\beta}.
 $$
 
 Поэтому:
 
 $$
-\frac{\partial L_{L2}}{\partial\boldsymbol{\beta}}
-=
+\frac{\partial L_{L2}}{\partial\boldsymbol{\beta}} =
 -2X^T\mathbf y
 +
 2X^TX\boldsymbol{\beta}
@@ -380,9 +360,7 @@ $$
 +
 2X^TX\boldsymbol{\beta}
 +
-2\lambda\boldsymbol{\beta}
-=
-0.
+2\lambda\boldsymbol{\beta} = 0
 $$
 
 Делим на $2$:
@@ -392,9 +370,8 @@ $$
 +
 X^TX\boldsymbol{\beta}
 +
-\lambda\boldsymbol{\beta}
-=
-0.
+\lambda\boldsymbol{\beta} =
+0
 $$
 
 Переносим $X^T\mathbf y$ вправо:
@@ -402,25 +379,22 @@ $$
 $$
 X^TX\boldsymbol{\beta}
 +
-\lambda\boldsymbol{\beta}
-=
-X^T\mathbf y.
+\lambda\boldsymbol{\beta} =
+X^T\mathbf y
 $$
 
 Выносим $\boldsymbol{\beta}$:
 
 $$
-(X^TX+\lambda I)\boldsymbol{\beta}
-=
-X^T\mathbf y.
+(X^TX+\lambda I)\boldsymbol{\beta} =
+X^T\mathbf y
 $$
 
 Умножаем обе части слева на обратную матрицу:
 
 $$
 \boxed{
-\hat{\boldsymbol{\beta}}_{L2}
-=
+\hat{\boldsymbol{\beta}}_{L2} =
 (X^TX+\lambda I)^{-1}X^T\mathbf y
 }
 $$
@@ -430,8 +404,7 @@ $$
 По сравнению с обычной линейной регрессией:
 
 $$
-\hat{\boldsymbol{\beta}}
-=
+\hat{\boldsymbol{\beta}} =
 (X^TX)^{-1}X^T\mathbf y,
 $$
 
@@ -439,10 +412,9 @@ $$
 
 $$
 \boxed{
-\hat{\boldsymbol{\beta}}_{L2}
-=
+\hat{\boldsymbol{\beta}}_{L2} =
 (X^TX+\lambda I)^{-1}X^T\mathbf y
-}.
+}
 $$
 
 Главное изменение — к матрице $X^TX$ добавляется $\lambda I$.
@@ -453,8 +425,7 @@ $$
 При L1-регуляризации используется сумма модулей коэффициентов:
 
 $$
-L_{L1}(\boldsymbol{\beta})
-=
+L_{L1}(\boldsymbol{\beta}) =
 \|\mathbf y-X\boldsymbol{\beta}\|_2^2
 +
 \lambda\|\boldsymbol{\beta}\|_1.
@@ -463,8 +434,7 @@ $$
 При этом:
 
 $$
-\|\boldsymbol{\beta}\|_1
-=
+\|\boldsymbol{\beta}\|_1 =
 |\beta_0|+|\beta_1|+\dots+|\beta_p|.
 $$
 
@@ -499,8 +469,7 @@ $$
 Например, модель:
 
 $$
-\hat y
-=
+\hat y =
 \beta_0+
 \beta_1x_1+
 \beta_2x_2+
@@ -510,8 +479,7 @@ $$
 после L1-регуляризации может иметь вид:
 
 $$
-\hat y
-=
+\hat y =
 \beta_0+
 2.1x_1+
 0x_2+
@@ -548,11 +516,10 @@ $$
 Рассмотрим функцию потерь:
 
 $$
-L_1(\boldsymbol{\beta})
-=
+L_1(\boldsymbol{\beta}) =
 \|\mathbf y-X\boldsymbol{\beta}\|_2^2
 +
-\lambda\sum_{j=1}^{p}|\beta_j|.
+\lambda\sum_{j=1}^{p}|\beta_j|
 $$
 
 Если некоторый признак не оказывает существенного влияния на целевую переменную, то его коэффициент может стать равным:
@@ -566,8 +533,7 @@ $$
 Например, исходная модель:
 
 $$
-\hat y
-=
+\hat y =
 \beta_0+
 \beta_1x_1+
 \beta_2x_2+
@@ -578,8 +544,7 @@ $$
 После L1-регуляризации может получиться:
 
 $$
-\hat y
-=
+\hat y =
 \beta_0+
 2.1x_1+
 0x_2+
@@ -590,8 +555,7 @@ $$
 То есть:
 
 $$
-\hat y
-=
+\hat y =
 \beta_0+
 2.1x_1+
 0.7x_3.
@@ -611,8 +575,7 @@ $$
 Рассмотрим простейший случай одного коэффициента:
 
 $$
-L(\beta)
-=
+L(\beta) =
 \text{ошибка}+\lambda|\beta|.
 $$
 
@@ -625,7 +588,7 @@ $$
 Графически функция $|\beta|$ имеет форму буквы V:
 
 $$
-|\beta|.
+|\beta|
 $$
 
 Из-за этого оптимум достаточно часто оказывается **точно в точке $\beta=0$**.
@@ -633,13 +596,13 @@ $$
 Для сравнения, при L2-регуляризации штраф имеет вид:
 
 $$
-\lambda\beta^2.
+\lambda\beta^2
 $$
 
 Он плавный:
 
 $$
-\frac{d}{d\beta}\beta^2=2\beta.
+\frac{d}{d\beta}\beta^2=2\beta
 $$
 
 L2 обычно уменьшает коэффициенты, но не заставляет их становиться ровно нулём.
@@ -653,7 +616,7 @@ $$
 а
 
 $$
-\boxed{\text{L2}\Rightarrow\text{маленькие коэффициенты}}.
+\boxed{\text{L2}\Rightarrow\text{маленькие коэффициенты}}
 $$
 
 Именно поэтому L1-регуляризация хорошо подходит для отбора признаков.
@@ -678,8 +641,7 @@ $$
 можно использовать:
 
 $$
-\hat y
-=
+\hat y =
 \beta_0+
 \beta_1x+
 \beta_2x^2+
@@ -707,8 +669,7 @@ $$
 Тогда:
 
 $$
-\hat y
-=
+\hat y =
 \begin{pmatrix}
 1&x&x^2&x^3
 \end{pmatrix}
@@ -744,8 +705,7 @@ $$
 
 $$
 \boxed{
-\hat{\boldsymbol{\beta}}
-=
+\hat{\boldsymbol{\beta}} =
 (\Phi^T\Phi)^{-1}\Phi^T\mathbf y
 }.
 $$
@@ -756,8 +716,7 @@ $$
 
 $$
 \boxed{
-\hat{\boldsymbol{\beta}}_{L2}
-=
+\hat{\boldsymbol{\beta}}_{L2} =
 (\Phi^T\Phi+\lambda I)^{-1}\Phi^T\mathbf y
 }
 $$
@@ -766,8 +725,7 @@ $$
 
 $$
 \boxed{
-\hat{\boldsymbol{\beta}}_{L1}
-=
+\hat{\boldsymbol{\beta}}_{L1} =
 \arg\min_{\boldsymbol{\beta}}
 \left[
 \|\mathbf y-\Phi\boldsymbol{\beta}\|_2^2

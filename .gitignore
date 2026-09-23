@@ -1,3 +1,7 @@
+__pycache__/
+checkpoints/
+*.pyc
+ml_utils copy.py
 *.xlsx
 *questions*.md
 *copy*.md

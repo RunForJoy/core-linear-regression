@@ -16,14 +16,7 @@ $$
 Поэтому производная по вектору $\boldsymbol{\beta}$ — это вектор частных производных:
 
 $$
-\frac{\partial L}{\partial\boldsymbol{\beta}}
-=
-\begin{pmatrix}
-\frac{\partial L}{\partial\beta_0}\\
-\frac{\partial L}{\partial\beta_1}\\
-\vdots\\
-\frac{\partial L}{\partial\beta_p}
-\end{pmatrix}.
+\frac{\partial L}{\partial\boldsymbol{\beta}}=\begin{pmatrix}\frac{\partial L}{\partial\beta_0}\\\frac{\partial L}{\partial\beta_1}\\\vdots\\\frac{\partial L}\partial\beta_p}\end{pmatrix}
 $$
 
 Рассмотрим каждое слагаемое функции $L$ отдельно.
@@ -45,12 +38,7 @@ $$
 Производная константы равна нулю:
 
 $$
-\boxed{
-\frac{\partial}{\partial\boldsymbol{\beta}}
-(\mathbf y^T\mathbf y)
-=
-0
-}
+\boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(\mathbf y^T\mathbf y)=0}
 $$
 
 ---
@@ -60,66 +48,36 @@ $$
 Рассмотрим:
 
 $$
--\mathbf y^TX\boldsymbol{\beta}.
+-\mathbf y^TX\boldsymbol{\beta}
 $$
 
 Для простоты обозначим:
 
 $$
-X^T\mathbf y=\mathbf a.
+X^T\mathbf y=\mathbf a
 $$
 
 Тогда:
 
 $$
-\mathbf y^TX\boldsymbol{\beta}
-=
-\mathbf a^T\boldsymbol{\beta}.
+\mathbf y^TX\boldsymbol{\beta}=\mathbf a^T\boldsymbol{\beta}
 $$
 
 Пусть:
 
 $$
-\mathbf a=
-\begin{pmatrix}
-a_0\\
-a_1\\
-\vdots\\
-a_p
-\end{pmatrix},
-\qquad
-\boldsymbol{\beta}
-=
-\begin{pmatrix}
-\beta_0\\
-\beta_1\\
-\vdots\\
-\beta_p
-\end{pmatrix}.
+\mathbf a=\begin{pmatrix}a_0\\a_1\\\vdots\\a_p\end{pmatrix},\qquad\boldsymbol{\beta}=\begin{pmatrix}\beta_0\\\beta_1\\\vdots\\\beta_p\end{pmatrix}
 $$
 
 Тогда:
 
-$$
-\mathbf a^T\boldsymbol{\beta}
-=
-\begin{pmatrix}
-a_0&a_1&\dots&a_p
-\end{pmatrix}
-\begin{pmatrix}
-\beta_0\\
-\beta_1\\
-\vdots\\
-\beta_p
-\end{pmatrix}.
+$$\mathbf a^T\boldsymbol{\beta}=\begin{pmatrix}a_0&a_1&\dots&a_p\end{pmatrix}\begin{pmatrix}\beta_0\\\beta_1\\\vdots\\\beta_p\end{pmatrix}
 $$
 
 По правилу умножения строки на столбец:
 
 $$
-\mathbf a^T\boldsymbol{\beta}
-=
-a_0\beta_0+a_1\beta_1+\dots+a_p\beta_p.
+\mathbf a^T\boldsymbol{\beta}=a_0\beta_0+a_1\beta_1+\dots+a_p\beta_p
 $$
 
 Теперь берём частные производные.
@@ -127,19 +85,13 @@ $$
 По $\beta_0$:
 
 $$
-\frac{\partial}{\partial\beta_0}
-(a_0\beta_0+a_1\beta_1+\dots+a_p\beta_p)
-=
-a_0.
+\frac{\partial}{\partial\beta_0}(a_0\beta_0+a_1\beta_1+\dots+a_p\beta_p)=a_0
 $$
 
 По $\beta_1$:
 
 $$
-\frac{\partial}{\partial\beta_1}
-(a_0\beta_0+a_1\beta_1+\dots+a_p\beta_p)
-=
-a_1.
+\frac{\partial}{\partial\beta_1}(a_0\beta_0+a_1\beta_1+\dots+a_p\beta_p)=a_1
 $$
 
 И так далее.
@@ -147,10 +99,7 @@ $$
 Поэтому:
 
 $$
-\frac{\partial}{\partial\boldsymbol{\beta}}
-(\mathbf a^T\boldsymbol{\beta})
-=
-\mathbf a.
+\frac{\partial}{\partial\boldsymbol{\beta}}(\mathbf a^T\boldsymbol{\beta})=\mathbf a
 $$
 
 Так как:
@@ -162,21 +111,13 @@ $$
 получаем:
 
 $$
-\frac{\partial}{\partial\boldsymbol{\beta}}
-(\mathbf y^TX\boldsymbol{\beta})
-=
-X^T\mathbf y.
+\frac{\partial}{\partial\boldsymbol{\beta}}(\mathbf y^TX\boldsymbol{\beta})=X^T\mathbf y
 $$
 
 Перед выражением стоит минус, поэтому:
 
 $$
-\boxed{
-\frac{\partial}{\partial\boldsymbol{\beta}}
-(-\mathbf y^TX\boldsymbol{\beta})
-=
--X^T\mathbf y
-}
+\boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(-\mathbf y^TX\boldsymbol{\beta})=-X^T\mathbf y}
 $$
 
 ---
@@ -186,23 +127,19 @@ $$
 Рассмотрим:
 
 $$
--\boldsymbol{\beta}^TX^T\mathbf y.
+-\boldsymbol{\beta}^TX^T\mathbf y
 $$
 
 Заметим, что:
 
 $$
-\mathbf y^TX\boldsymbol{\beta}
-=
-\boldsymbol{\beta}^TX^T\mathbf y.
+\mathbf y^TX\boldsymbol{\beta}=\boldsymbol{\beta}^TX^T\mathbf y
 $$
 
 Действительно:
 
 $$
-\mathbf y^TX\boldsymbol{\beta}
-=
-(\mathbf y^TX\boldsymbol{\beta})^T.
+\mathbf y^TX\boldsymbol{\beta}=(\mathbf y^TX\boldsymbol{\beta})^T
 $$
 
 Используя правило:
@@ -214,17 +151,13 @@ $$
 получаем:
 
 $$
-(\mathbf y^TX\boldsymbol{\beta})^T
-=
-\boldsymbol{\beta}^TX^T\mathbf y.
+(\mathbf y^TX\boldsymbol{\beta})^T=\boldsymbol{\beta}^TX^T\mathbf y
 $$
 
 Следовательно:
 
 $$
-\mathbf y^TX\boldsymbol{\beta}
-=
-\boldsymbol{\beta}^TX^T\mathbf y.
+\mathbf y^TX\boldsymbol{\beta}=\boldsymbol{\beta}^TX^T\mathbf y
 $$
 
 Это одно и то же число.
@@ -232,20 +165,13 @@ $$
 Поэтому производная аналогична предыдущему случаю:
 
 $$
-\boxed{
-\frac{\partial}{\partial\boldsymbol{\beta}}
-(-\boldsymbol{\beta}^TX^T\mathbf y)
-=
--X^T\mathbf y
-}
+\boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(-\boldsymbol{\beta}^TX^T\mathbf y)=-X^T\mathbf y}
 $$
 
 Таким образом, два средних слагаемых вместе дают:
 
 $$
--X^T\mathbf y-X^T\mathbf y
-=
--2X^T\mathbf y.
+-X^T\mathbf y-X^T\mathbf y=-2X^T\mathbf y
 $$
 
 ---
@@ -255,26 +181,25 @@ $$
 Теперь рассмотрим наиболее сложное слагаемое:
 
 $$
-\boldsymbol{\beta}^TX^TX\boldsymbol{\beta}.
+\boldsymbol{\beta}^TX^TX\boldsymbol{\beta}
 $$
 
 Для начала обозначим:
 
 $$
-A=X^TX.
+A=X^TX
 $$
 
 Тогда выражение принимает вид:
 
 $$
-\boldsymbol{\beta}^TA\boldsymbol{\beta}.
+\boldsymbol{\beta}^TA\boldsymbol{\beta}
 $$
 
 Нужно найти:
 
 $$
-\frac{\partial}{\partial\boldsymbol{\beta}}
-(\boldsymbol{\beta}^TA\boldsymbol{\beta}).
+\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^TA\boldsymbol{\beta})
 $$
 
 Чтобы понять эту формулу, сначала рассмотрим простой случай с двумя коэффициентами.
@@ -282,87 +207,37 @@ $$
 Пусть:
 
 $$
-\boldsymbol{\beta}
-=
-\begin{pmatrix}
-\beta_1\\
-\beta_2
-\end{pmatrix},
-\qquad
-A=
-\begin{pmatrix}
-a&b\\
-c&d
-\end{pmatrix}.
+\boldsymbol{\beta}=\begin{pmatrix}\beta_1\\\beta_2\end{pmatrix},\qquadA=\begin{pmatrix}a&b\\c&d\end{pmatrix}
 $$
 
 Тогда:
 
 $$
-\boldsymbol{\beta}^TA\boldsymbol{\beta}
-=
-\begin{pmatrix}
-\beta_1&\beta_2
-\end{pmatrix}
-\begin{pmatrix}
-a&b\\
-c&d
-\end{pmatrix}
-\begin{pmatrix}
-\beta_1\\
-\beta_2
-\end{pmatrix}.
+\boldsymbol{\beta}^TA\boldsymbol{\beta}=\begin{pmatrix}\beta_1&\beta_2\end{pmatrix}\begin{pmatrix}a&b\\c&d\end{pmatrix}\begin{pmatrix}\beta_1\\\beta_2\end{pmatrix}
 $$
 
 Сначала перемножаем первые две матрицы:
 
 $$
-\begin{pmatrix}
-\beta_1&\beta_2
-\end{pmatrix}
-\begin{pmatrix}
-a&b\\
-c&d
-\end{pmatrix}
-=
-\begin{pmatrix}
-a\beta_1+c\beta_2&
-b\beta_1+d\beta_2
-\end{pmatrix}.
+\begin{pmatrix}\beta_1&\beta_2\end{pmatrix}\begin{pmatrix}a&b\\c&d\end{pmatrix}=\begin{pmatrix}a\beta_1+c\beta_2&b\beta_1+d\beta_2\end{pmatrix}
 $$
 
 Теперь умножаем на последний столбец:
 
 $$
-\begin{pmatrix}
-a\beta_1+c\beta_2&
-b\beta_1+d\beta_2
-\end{pmatrix}
-\begin{pmatrix}
-\beta_1\\
-\beta_2
-\end{pmatrix}.
+\begin{pmatrix}a\beta_1+c\beta_2&b\beta_1+d\beta_2\end{pmatrix}\begin{pmatrix}\beta_1\\\beta_2\end{pmatrix}
 $$
 
 Получаем:
 
 $$
-a\beta_1^2
-+c\beta_1\beta_2
-+b\beta_1\beta_2
-+d\beta_2^2.
+a\beta_1^2+c\beta_1\beta_2+b\beta_1\beta_2+d\beta_2^2
 $$
 
 Собираем подобные слагаемые:
 
 $$
-\boxed{
-\boldsymbol{\beta}^TA\boldsymbol{\beta}
-=
-a\beta_1^2
-+(b+c)\beta_1\beta_2
-+d\beta_2^2
-}
+\boxed{\boldsymbol{\beta}^TA\boldsymbol{\beta}=a\beta_1^2+(b+c)\beta_1\beta_2+d\beta_2^2}
 $$
 
 Теперь это обычная функция двух переменных.
@@ -374,44 +249,27 @@ $$
 По $\beta_1$:
 
 $$
-\frac{\partial}{\partial\beta_1}
-\left(
-a\beta_1^2
-+(b+c)\beta_1\beta_2
-+d\beta_2^2
-\right)
-=
-2a\beta_1+(b+c)\beta_2.
+\frac{\partial}{\partial\beta_1}\left(a\beta_1^2+(b+c)\beta_1\beta_2+d\beta_2^2\right)=2a\beta_1+(b+c)\beta_2
 $$
 
 По $\beta_2$:
 
 $$
-\frac{\partial}{\partial\beta_2}
-\left(
-a\beta_1^2
-+(b+c)\beta_1\beta_2
-+d\beta_2^2
-\right)
-=
-(b+c)\beta_1+2d\beta_2.
+\frac{\partial}{\partial\beta_2}\left(a\beta_1^2+(b+c)\beta_1\beta_2+d\beta_2^2\right)=(b+c)\beta_1+2d\beta_2
 $$
 
 Следовательно, вектор частных производных:
 
 $$
-\boxed{
-\frac{\partial}{\partial\boldsymbol{\beta}}
-(\boldsymbol{\beta}^TA\boldsymbol{\beta})
-=
-\begin{pmatrix}
-2a\beta_1+(b+c)\beta_2\\
-(b+c)\beta_1+2d\beta_2
-\end{pmatrix}
-}
+\boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^TA\boldsymbol{\beta})=\begin{pmatrix}2a\beta_1+(b+c)\beta_2\\(b+c)\beta_1+2d\beta_2\end{pmatrix}}
 $$
 
- В матричной форме это:  $$ \boxed{ \frac{\partial}{\partial\boldsymbol{\beta}} (\boldsymbol{\beta}^TA\boldsymbol{\beta})  =  (A+A^T)\boldsymbol{\beta}  }  $$
+ В матричной форме это:  
+ 
+ $$ 
+ \boxed{ \frac{\partial}{\partial\boldsymbol{\beta}} (\boldsymbol{\beta}^TA\boldsymbol{\beta})  =  (A+A^T)\boldsymbol{\beta}  } 
+  $$
+
 > [!success]- почему $(A+A^T)\boldsymbol{\beta}$?
 >
 >
@@ -438,8 +296,7 @@ $$
 > Складываем:
 >
 > $$
-> A+A^T
-> =
+> A+A^T =
 > \begin{pmatrix}
 > a&b\\
 > c&d
@@ -454,8 +311,7 @@ $$
 > Получаем:
 >
 > $$
-> A+A^T
-> =
+> A+A^T =
 > \begin{pmatrix}
 > 2a&b+c\\
 > b+c&2d
@@ -465,8 +321,7 @@ $$
 > Теперь умножаем на $\boldsymbol{\beta}$:
 >
 > $$
-> (A+A^T)\boldsymbol{\beta}
-> =
+> (A+A^T)\boldsymbol{\beta} =
 > \begin{pmatrix}
 > 2a&b+c\\
 > b+c&2d
@@ -480,8 +335,7 @@ $$
 > Перемножаем матрицу и вектор построчно:
 >
 > $$
-> (A+A^T)\boldsymbol{\beta}
-> =
+> (A+A^T)\boldsymbol{\beta} =
 > \begin{pmatrix}
 > 2a\beta_1+(b+c)\beta_2\\
 > (b+c)\beta_1+2d\beta_2
@@ -493,8 +347,7 @@ $$
 > $$
 > \boxed{
 > \frac{\partial}{\partial\boldsymbol{\beta}}
-> (\boldsymbol{\beta}^TA\boldsymbol{\beta})
-> =
+> (\boldsymbol{\beta}^TA\boldsymbol{\beta}) =
 > (A+A^T)\boldsymbol{\beta}
 > }
 > $$
@@ -515,15 +368,14 @@ $$
 Мы ввели:
 
 $$
-A=X^TX.
+A=X^TX
 $$
 
 Поэтому:
 
 $$
 \frac{\partial}{\partial\boldsymbol{\beta}}
-(\boldsymbol{\beta}^TX^TX\boldsymbol{\beta})
-=
+(\boldsymbol{\beta}^TX^TX\boldsymbol{\beta})=
 \left(
 X^TX+(X^TX)^T
 \right)\boldsymbol{\beta}.
@@ -532,9 +384,7 @@ $$
 Теперь используем свойство транспонирования произведения:
 
 $$
-(X^TX)^T
-=
-X^T(X^T)^T.
+(X^TX)^T=X^T(X^T)^T
 $$
 
 Так как:
@@ -554,11 +404,7 @@ $$
 Следовательно:
 
 $$
-X^TX+(X^TX)^T
-=
-X^TX+X^TX
-=
-2X^TX.
+X^TX+(X^TX)^T=X^TX+X^TX=2X^TX
 $$
 
 Поэтому:
@@ -566,8 +412,7 @@ $$
 $$
 \boxed{
 \frac{\partial}{\partial\boldsymbol{\beta}}
-(\boldsymbol{\beta}^TX^TX\boldsymbol{\beta})
-=
+(\boldsymbol{\beta}^TX^TX\boldsymbol{\beta})=
 2X^TX\boldsymbol{\beta}
 }
 $$
@@ -579,8 +424,7 @@ $$
 Исходная функция:
 
 $$
-L(\boldsymbol{\beta})
-=
+L(\boldsymbol{\beta})=
 \mathbf y^T\mathbf y
 -\mathbf y^TX\boldsymbol{\beta}
 -\boldsymbol{\beta}^TX^T\mathbf y
@@ -591,8 +435,7 @@ $$
 
 $$
 \frac{\partial}{\partial\boldsymbol{\beta}}
-(\mathbf y^T\mathbf y)
-=
+(\mathbf y^T\mathbf y)=
 0.
 $$
 
@@ -600,8 +443,7 @@ $$
 
 $$
 \frac{\partial}{\partial\boldsymbol{\beta}}
-(-\mathbf y^TX\boldsymbol{\beta})
-=
+(-\mathbf y^TX\boldsymbol{\beta})=
 -X^T\mathbf y.
 $$
 
@@ -609,8 +451,7 @@ $$
 
 $$
 \frac{\partial}{\partial\boldsymbol{\beta}}
-(-\boldsymbol{\beta}^TX^T\mathbf y)
-=
+(-\boldsymbol{\beta}^TX^T\mathbf y)=
 -X^T\mathbf y.
 $$
 
@@ -618,29 +459,21 @@ $$
 
 $$
 \frac{\partial}{\partial\boldsymbol{\beta}}
-(\boldsymbol{\beta}^TX^TX\boldsymbol{\beta})
-=
+(\boldsymbol{\beta}^TX^TX\boldsymbol{\beta})=
 2X^TX\boldsymbol{\beta}.
 $$
 
 Складываем:
 
 $$
-\frac{\partial L}{\partial\boldsymbol{\beta}}
-=
-0
--X^T\mathbf y
--X^T\mathbf y
-+
-2X^TX\boldsymbol{\beta}.
+\frac{\partial L}{\partial\boldsymbol{\beta}}=0-X^T\mathbf y-X^T\mathbf y+2X^TX\boldsymbol{\beta}
 $$
 
 Получаем:
 
 $$
 \boxed{
-\frac{\partial L}{\partial\boldsymbol{\beta}}
-=
+\frac{\partial L}{\partial\boldsymbol{\beta}}=
 -2X^T\mathbf y
 +
 2X^TX\boldsymbol{\beta}

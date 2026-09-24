@@ -202,15 +202,14 @@ $$
 
 #### Для этого берём [[ML_2_3_Linear_Regression_берём производную по вектору бетта|производную по вектору бетта]] и приравниваем её к нулю:
 
-$$
-\frac{\partial L}{\partial\boldsymbol{\beta}} = -2X^T\mathbf{y} + 2X^TX\boldsymbol{\beta} = 0
-$$
+$$ \frac{\partial L}{\partial\boldsymbol{\beta}} = -2X^T\mathbf{y} + 2X^TX\boldsymbol{\beta} = 0 $$
 
-Делим обе части на $2$:
-$$
--X^T\mathbf y + X^TX\boldsymbol{\beta} = 0.
-$$
-Переносим $X^T\mathbf y$ вправо:
+Делим обе части на 2:
+
+$$ -X^T\mathbf y + X^TX\boldsymbol{\beta} = 0 $$
+
+Переносим $X^T\mathbf y $ вправо:
+
 $$
 X^TX\boldsymbol{\beta} = X^T\mathbf y.
 $$

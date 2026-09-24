@@ -270,6 +270,12 @@ $$
 \boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^TA\boldsymbol{\beta})=(A+A^T)\boldsymbol{\beta}}
 $$
 
+$$
+\frac{\partial}{\partial \boldsymbol{\beta}}
+\left(\boldsymbol{\beta}^{T} A \boldsymbol{\beta}\right)=(A+A^{T})\boldsymbol{\beta}
+$$
+
+
 > [!success]- почему $(A+A^T)\boldsymbol{\beta}$?
 >
 >

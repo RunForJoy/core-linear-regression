@@ -285,131 +285,66 @@ $$ L_{L2}(\boldsymbol{\beta}) = \|\mathbf{y} - X\boldsymbol{\beta}\|_2^2 + \lamb
 
 Здесь:
 
-$$
-\lambda\geq0
-$$
+$$ \lambda\geq0 $$
 
 - параметр регуляризации.
 
 Норма вектора в квадрате:
 
-$$
-\|\boldsymbol{\beta}\|_2^2 = \beta_0^2+\beta_1^2+\dots+\beta_p^2.
-$$
+$$ \|\boldsymbol{\beta}\|_2^2 = \beta_0^2+\beta_1^2+\dots+\beta_p^2 $$
 
-Обычно свободный коэффициент $\beta_0$ не регуляризуют. В этом случае штраф применяется только к $\beta_1,\dots,\beta_p$.
+Обычно свободный коэффициент $ \beta_0 $ не регуляризуют. В этом случае штраф применяется только к $ \beta_1,\dots,\beta_p $
 
-Если для простоты записать штраф через весь вектор $\boldsymbol{\beta}$, получаем:
+Если для простоты записать штраф через весь вектор $ \boldsymbol{\beta} $, получаем:
 
-$$
-L_{L2}(\boldsymbol{\beta}) =
-(\mathbf y-X\boldsymbol{\beta})^T
-(\mathbf y-X\boldsymbol{\beta})
-+
-\lambda\boldsymbol{\beta}^T\boldsymbol{\beta}
-$$
+$$ L_{L2}(\boldsymbol{\beta}) = (\mathbf y-X\boldsymbol{\beta})^T (\mathbf y-X\boldsymbol{\beta}) + \lambda\boldsymbol{\beta}^T\boldsymbol{\beta} $$
 
 Мы уже знаем производную первого слагаемого:
 
-$$
-\frac{\partial}{\partial\boldsymbol{\beta}}
-\left[
-(\mathbf y-X\boldsymbol{\beta})^T
-(\mathbf y-X\boldsymbol{\beta})
-\right] =
--2X^T\mathbf y
-+
-2X^TX\boldsymbol{\beta}
-$$
+$$ \frac{\partial}{\partial\boldsymbol{\beta}} \left[ (\mathbf y-X\boldsymbol{\beta})^T (\mathbf y-X\boldsymbol{\beta}) \right] = -2X^T\mathbf y + 2X^TX\boldsymbol{\beta} $$
 
 Для второго слагаемого:
 
-$$
-\boldsymbol{\beta}^T\boldsymbol{\beta} = \beta_0^2+\beta_1^2+\dots+\beta_p^2
-$$
+$$ \boldsymbol{\beta}^T\boldsymbol{\beta} = \beta_0^2+\beta_1^2+\dots+\beta_p^2 $$
 
 Производная:
 
-$$
-\frac{\partial}{\partial\boldsymbol{\beta}}
-(\boldsymbol{\beta}^T\boldsymbol{\beta}) =
-2\boldsymbol{\beta}.
-$$
+$$ \frac{\partial}{\partial\boldsymbol{\beta}} (\boldsymbol{\beta}^T\boldsymbol{\beta}) = 2\boldsymbol{\beta} $$
 
 Поэтому:
 
-$$
-\frac{\partial L_{L2}}{\partial\boldsymbol{\beta}} =
--2X^T\mathbf y
-+
-2X^TX\boldsymbol{\beta}
-+
-2\lambda\boldsymbol{\beta}.
-$$
+$$ \frac{\partial L_{L2}}{\partial\boldsymbol{\beta}} = -2X^T\mathbf y + 2X^TX\boldsymbol{\beta} + 2\lambda\boldsymbol{\beta} $$
 
 Приравниваем к нулю:
 
-$$
--2X^T\mathbf y
-+
-2X^TX\boldsymbol{\beta}
-+
-2\lambda\boldsymbol{\beta} = 0
-$$
+$$ -2X^T\mathbf y + 2X^TX\boldsymbol{\beta} + 2\lambda\boldsymbol{\beta} = 0 $$
 
 Делим на $2$:
 
-$$
--X^T\mathbf y
-+
-X^TX\boldsymbol{\beta}
-+
-\lambda\boldsymbol{\beta} =
-0
-$$
+$$ -X^T\mathbf y + X^TX\boldsymbol{\beta} + \lambda\boldsymbol{\beta} = 0 $$
 
-Переносим $X^T\mathbf y$ вправо:
+Переносим $ X^T\mathbf y $ вправо:
 
 $$
-X^TX\boldsymbol{\beta}
-+
-\lambda\boldsymbol{\beta} =
-X^T\mathbf y
-$$
+X^TX\boldsymbol{\beta} + \lambda\boldsymbol{\beta} = X^T\mathbf y $$
 
-Выносим $\boldsymbol{\beta}$:
+Выносим $ \boldsymbol{\beta} $:
 
-$$
-(X^TX+\lambda I)\boldsymbol{\beta} =
-X^T\mathbf y
-$$
+$$ (X^TX+\lambda I)\boldsymbol{\beta} = X^T\mathbf y $$
 
 Умножаем обе части слева на обратную матрицу:
 
-$$
-\boxed{
-\hat{\boldsymbol{\beta}}_{L2} =
-(X^TX+\lambda I)^{-1}X^T\mathbf y
-}
-$$
+$$ \boxed{ \hat{\boldsymbol{\beta}}_{L2} = (X^TX+\lambda I)^{-1}X^T\mathbf y } $$
 
 Это аналитическое решение **L2-регрессии (гребневой регрессии или Ridge Regression)**.
 
 По сравнению с обычной линейной регрессией:
 
-$$
-\hat{\boldsymbol{\beta}} =
-(X^TX)^{-1}X^T\mathbf y,
-$$
+$$ \hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf y, $$
 
 получаем:
 
-$$
-\boxed{
-\hat{\boldsymbol{\beta}}_{L2} =
-(X^TX+\lambda I)^{-1}X^T\mathbf y
-}
-$$
+$$ \boxed{ \hat{\boldsymbol{\beta}}_{L2} = (X^TX+\lambda I)^{-1}X^T\mathbf y } $$
 
 Главное изменение — к матрице $X^TX$ добавляется $\lambda I$.
 
@@ -418,67 +353,39 @@ $$
 
 При L1-регуляризации используется сумма модулей коэффициентов:
 
-$$
-L_{L1}(\boldsymbol{\beta}) =
-\|\mathbf y-X\boldsymbol{\beta}\|_2^2
-+
-\lambda\|\boldsymbol{\beta}\|_1.
-$$
+$$ L_{L1}(\boldsymbol{\beta}) = \|\mathbf y-X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_1 $$
 
 При этом:
 
-$$
-\|\boldsymbol{\beta}\|_1 =
-|\beta_0|+|\beta_1|+\dots+|\beta_p|.
-$$
+$$ \|\boldsymbol{\beta}\|_1 = |\beta_0|+|\beta_1|+\dots+|\beta_p| $$
 
 Обычно $\beta_0$ также исключают из штрафа.
 
 Главное отличие L1 от L2:
 
-$$
-L2:
-\qquad
-\lambda\sum_j\beta_j^2
-$$
+ L2: 
 
-$$
+ $$ \qquad \lambda\sum_j\beta_j^2 $$
+
 L1:
-\qquad
-\lambda\sum_j|\beta_j|.
-$$
+
+$$ \qquad \lambda\sum_j|\beta_j| $$
 
 При L1-функция $|\beta|$ имеет излом в точке:
 
-$$
-\beta=0.
-$$
+$$ \beta=0 $$
 
 Из-за этого оптимальное решение может иметь коэффициенты, которые **точно равны нулю**:
 
-$$
-\beta_j=0.
-$$
+$$ \beta_j=0 $$
 
 Например, модель:
 
-$$
-\hat y =
-\beta_0+
-\beta_1x_1+
-\beta_2x_2+
-\beta_3x_3
-$$
+$$ \hat y = \beta_0+\beta_1x_1+\beta_2x_2+\beta_3x_3 $$
 
 после L1-регуляризации может иметь вид:
 
-$$
-\hat y =
-\beta_0+
-2.1x_1+
-0x_2+
-0.7x_3.
-$$
+$$\hat y =\beta_0+2.1x_1+0x_2+0.7x_3 $$
 
 Тогда признак $x_2$ фактически исключается из модели.
 
@@ -486,9 +393,7 @@ $$
 
 В общем случае для L1-регуляризации **нет простой формулы**, аналогичной
 
-$$
-(X^TX+\lambda I)^{-1}X^T\mathbf y.
-$$
+$$ (X^TX+\lambda I)^{-1}X^T\mathbf y $$
 
 Задача обычно решается численными методами оптимизации.
 

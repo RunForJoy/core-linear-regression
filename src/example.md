@@ -13,11 +13,11 @@
 Для одного наблюдения модель имеет вид:
 
 $$
-\hat y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip}
+\hat{y}_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip}.
 $$
 
 Здесь:
-- $\hat y_i$ — предсказанное значение;
+- $\hat{y}_i$ — предсказанное значение;
 - $\beta_0$ — свободный коэффициент;
 - $\beta_1,\dots,\beta_p$ — веса признаков;
 - $x_{ij}$ — значение $j$-го признака у $i$-го наблюдения.
@@ -27,13 +27,13 @@ $$
 Соберём все истинные значения $y_i$ в вектор:
 
 $$
-\mathbf y =
+\mathbf{y} =
 \begin{pmatrix}
 y_1 \\
 y_2 \\
 \vdots \\
 y_n
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
 Вектор коэффициентов модели:
@@ -45,7 +45,7 @@ $$
 \beta_1 \\
 \vdots \\
 \beta_p
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
 Матрица признаков $X$ имеет первый столбец из единиц:
@@ -57,144 +57,188 @@ X =
 1 & x_{21} & x_{22} & \dots & x_{2p} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 1 & x_{n1} & x_{n2} & \dots & x_{np}
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
-Первый столбец из единиц нужен для свободного коэффициента $\beta_0$: $1 \cdot \beta_0 = \beta_0$.
+Первый столбец из единиц нужен для свободного коэффициента $\beta_0$:
+
+$$
+1 \cdot \beta_0 = \beta_0.
+$$
 
 Поэтому предсказания всей модели можно записать одним выражением:
 
 $$
-\hat{\mathbf y} = X\boldsymbol{\beta}
+\hat{\mathbf{y}} = X\boldsymbol{\beta}.
 $$
 
-Например, первая строка произведения $X\boldsymbol{\beta}$ даёт: $1 \cdot \beta_0 + x_{11}\beta_1 + x_{12}\beta_2 + \dots + x_{1p}\beta_p$, то есть именно формулу линейной регрессии для первого наблюдения.
+Например, первая строка произведения $X\boldsymbol{\beta}$ даёт:
+
+$$
+1 \cdot \beta_0 + x_{11}\beta_1 + x_{12}\beta_2 + \dots + x_{1p}\beta_p.
+$$
+
+То есть именно формулу линейной регрессии для первого наблюдения.
 
 #### Функция потерь
 
-Ошибка для одного наблюдения: $e_i = y_i - \hat y_i$.
+Ошибка для одного наблюдения:
+
+$$
+e_i = y_i - \hat{y}_i.
+$$
 
 Вектор всех ошибок:
 
 $$
-\mathbf e = \mathbf y - \hat{\mathbf y}
+\mathbf{e} = \mathbf{y} - \hat{\mathbf{y}}.
 $$
 
-Так как $\hat{\mathbf y} = X\boldsymbol{\beta}$, получаем:
+Так как
 
 $$
-\boxed{\mathbf e = \mathbf y - X\boldsymbol{\beta}}
+\hat{\mathbf{y}} = X\boldsymbol{\beta},
+$$
+
+то
+
+$$
+\boxed{\mathbf{e} = \mathbf{y} - X\boldsymbol{\beta}}.
 $$
 
 Метод наименьших квадратов минимизирует сумму квадратов ошибок:
 
 $$
-L(\boldsymbol{\beta}) = \sum_{i=1}^{n}(y_i - \hat y_i)^2
+L(\boldsymbol{\beta}) = \sum_{i=1}^{n}(y_i - \hat{y}_i)^2.
 $$
 
 В векторной форме эту сумму можно записать как скалярное произведение вектора ошибок самого на себя:
 
 $$
-L(\boldsymbol{\beta}) = \mathbf e^T\mathbf e
+L(\boldsymbol{\beta}) = \mathbf{e}^T\mathbf{e}.
 $$
 
-Поскольку $\mathbf e = \mathbf y - X\boldsymbol{\beta}$, получаем:
+Поскольку
 
 $$
-\boxed{L(\boldsymbol{\beta}) = (\mathbf y - X\boldsymbol{\beta})^T(\mathbf y - X\boldsymbol{\beta})}
+\mathbf{e} = \mathbf{y} - X\boldsymbol{\beta},
 $$
 
-Здесь транспонирование необходимо для того, чтобы из вектора-столбца получить вектор-строку. Например:
+получаем:
 
 $$
-\mathbf e =
+\boxed{L(\boldsymbol{\beta}) = (\mathbf{y} - X\boldsymbol{\beta})^T(\mathbf{y} - X\boldsymbol{\beta})}.
+$$
+
+Здесь транспонирование необходимо для того, чтобы из вектора-столбца получить вектор-строку.
+Например:
+
+$$
+\mathbf{e} =
 \begin{pmatrix}
 e_1 \\
 e_2 \\
 e_3
 \end{pmatrix},
 \qquad
-\mathbf e^T =
+\mathbf{e}^T =
 \begin{pmatrix}
 e_1 & e_2 & e_3
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
 Тогда:
 
 $$
-\mathbf e^T\mathbf e = 
-\begin{pmatrix} e_1 & e_2 & e_3 \end{pmatrix}
-\begin{pmatrix} e_1 \\ e_2 \\ e_3 \end{pmatrix}
-= e_1^2 + e_2^2 + e_3^2
+\mathbf{e}^T\mathbf{e} = \begin{pmatrix} e_1 & e_2 & e_3 \end{pmatrix} \begin{pmatrix} e_1 \\ e_2 \\ e_3 \end{pmatrix} = e_1^2 + e_2^2 + e_3^2.
 $$
 
-Таким образом, $\mathbf e^T\mathbf e$ действительно является суммой квадратов ошибок.
+Таким образом, $\mathbf{e}^T\mathbf{e}$ действительно является суммой квадратов ошибок.
 
 #### Раскрытие скобок
 
 Запишем функцию потерь:
 
 $$
-L(\boldsymbol{\beta}) = (\mathbf y - X\boldsymbol{\beta})^T(\mathbf y - X\boldsymbol{\beta})
+L(\boldsymbol{\beta}) = (\mathbf{y} - X\boldsymbol{\beta})^T(\mathbf{y} - X\boldsymbol{\beta}).
 $$
 
-Используем свойство транспонирования $(X\boldsymbol{\beta})^T = \boldsymbol{\beta}^TX^T$. Тогда:
+Используем свойство транспонирования:
 
 $$
-L(\boldsymbol{\beta}) = (\mathbf y^T - \boldsymbol{\beta}^TX^T)(\mathbf y - X\boldsymbol{\beta})
+(X\boldsymbol{\beta})^T = \boldsymbol{\beta}^TX^T.
+$$
+
+Тогда:
+
+$$
+L(\boldsymbol{\beta}) = (\mathbf{y}^T - \boldsymbol{\beta}^TX^T)(\mathbf{y} - X\boldsymbol{\beta}).
 $$
 
 Раскрываем скобки:
 
 $$
-L(\boldsymbol{\beta}) = \mathbf y^T\mathbf y - \mathbf y^TX\boldsymbol{\beta} - \boldsymbol{\beta}^TX^T\mathbf y + \boldsymbol{\beta}^TX^TX\boldsymbol{\beta}
+L(\boldsymbol{\beta}) = \mathbf{y}^T\mathbf{y} - \mathbf{y}^TX\boldsymbol{\beta} - \boldsymbol{\beta}^TX^T\mathbf{y} + \boldsymbol{\beta}^TX^TX\boldsymbol{\beta}.
 $$
 
-Нам необходимо найти такое $\boldsymbol{\beta}$, при котором $L(\boldsymbol{\beta})$ минимальна. Для этого берём производную по вектору $\boldsymbol{\beta}$ и приравниваем её к нулю:
+Нам необходимо найти такое $\boldsymbol{\beta}$, при котором $L(\boldsymbol{\beta})$ минимальна.
+Для этого берём производную по вектору $\boldsymbol{\beta}$ и приравниваем её к нулю:
 
 $$
-\frac{\partial L}{\partial\boldsymbol{\beta}} = -2X^T\mathbf y + 2X^TX\boldsymbol{\beta} = 0
+\frac{\partial L}{\partial\boldsymbol{\beta}} = -2X^T\mathbf{y} + 2X^TX\boldsymbol{\beta} = 0.
 $$
 
 Делим обе части на 2:
 
 $$
--X^T\mathbf y + X^TX\boldsymbol{\beta} = 0
+-X^T\mathbf{y} + X^TX\boldsymbol{\beta} = 0.
 $$
 
-Переносим $X^T\mathbf y$ вправо:
+Переносим $X^T\mathbf{y}$ вправо:
 
 $$
-X^TX\boldsymbol{\beta} = X^T\mathbf y
+X^TX\boldsymbol{\beta} = X^T\mathbf{y}.
 $$
 
-Это уравнение называется **нормальным уравнением**.
+Это уравнение называется нормальным уравнением.
 
 #### Решение нормального уравнения
 
 Если матрица $X^TX$ обратима, умножаем обе части слева на $(X^TX)^{-1}$:
 
 $$
-(X^TX)^{-1}X^TX\boldsymbol{\beta} = (X^TX)^{-1}X^T\mathbf y
+(X^TX)^{-1}X^TX\boldsymbol{\beta} = (X^TX)^{-1}X^T\mathbf{y}.
 $$
 
-Так как $(X^TX)^{-1}X^TX = I$, получаем:
+Так как
 
 $$
-I\boldsymbol{\beta} = (X^TX)^{-1}X^T\mathbf y
+(X^TX)^{-1}X^TX = I,
 $$
 
-А поскольку $I\boldsymbol{\beta} = \boldsymbol{\beta}$ (единичная матрица $I$ при умножении на любой вектор возвращает тот же вектор), то:
+получаем:
 
 $$
-\boxed{\hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf y}
+I\boldsymbol{\beta} = (X^TX)^{-1}X^T\mathbf{y}.
 $$
 
-Это и есть аналитическое решение задачи линейной регрессии методом наименьших квадратов. После нахождения коэффициентов предсказания вычисляются как:
+А поскольку:
 
 $$
-\boxed{\hat{\mathbf y} = X\hat{\boldsymbol{\beta}}}
+I\boldsymbol{\beta} = \boldsymbol{\beta},
+$$
+
+(единичная матрица $I$ при умножении на любой вектор возвращает тот же вектор без изменений), то:
+
+$$
+\boxed{\hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf{y}}.
+$$
+
+Это и есть аналитическое решение задачи линейной регрессии методом наименьших квадратов.
+После нахождения коэффициентов предсказания вычисляются как:
+
+$$
+\boxed{\hat{\mathbf{y}} = X\hat{\boldsymbol{\beta}}}.
 $$
 
 ---
@@ -206,116 +250,176 @@ $$
 Без регуляризации функция потерь:
 
 $$
-L(\boldsymbol{\beta}) = \|\mathbf y - X\boldsymbol{\beta}\|_2^2
+L(\boldsymbol{\beta}) = \|\mathbf{y} - X\boldsymbol{\beta}\|_2^2.
 $$
 
 При регуляризации к ней добавляется штраф за величину коэффициентов.
 
-> **Важно:** обычно свободный коэффициент $\beta_0$ не регуляризуют. Поэтому ниже штраф применяется только к весам признаков $\beta_1,\dots,\beta_p$.
+**Важно:** обычно свободный коэффициент $\beta_0$ не регуляризуют. Поэтому ниже штраф применяется только к весам признаков $\beta_1,\dots,\beta_p$.
 
 #### L2-регуляризация
 
 При L2-регуляризации к функции потерь добавляется штраф за большие значения коэффициентов:
 
 $$
-L_{L2}(\boldsymbol{\beta}) = \|\mathbf y - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_2^2
+L_{L2}(\boldsymbol{\beta}) = \|\mathbf{y} - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_2^2.
 $$
 
-Здесь $\lambda \geq 0$ — параметр регуляризации.
+Здесь:
+
+$$
+\lambda \geq 0
+$$
+
+— параметр регуляризации.
 
 Норма вектора в квадрате:
 
 $$
-\|\boldsymbol{\beta}\|_2^2 = \beta_0^2 + \beta_1^2 + \dots + \beta_p^2
+\|\boldsymbol{\beta}\|_2^2 = \beta_0^2 + \beta_1^2 + \dots + \beta_p^2.
 $$
 
-Обычно свободный коэффициент $\beta_0$ не регуляризуют. В этом случае штраф применяется только к $\beta_1,\dots,\beta_p$. Если для простоты записать штраф через весь вектор $\boldsymbol{\beta}$, получаем:
+Обычно свободный коэффициент $\beta_0$ не регуляризуют. В этом случае штраф применяется только к $\beta_1,\dots,\beta_p$.
+Если для простоты записать штраф через весь вектор $\boldsymbol{\beta}$, получаем:
 
 $$
-L_{L2}(\boldsymbol{\beta}) = (\mathbf y - X\boldsymbol{\beta})^T (\mathbf y - X\boldsymbol{\beta}) + \lambda\boldsymbol{\beta}^T\boldsymbol{\beta}
+L_{L2}(\boldsymbol{\beta}) = (\mathbf{y} - X\boldsymbol{\beta})^T(\mathbf{y} - X\boldsymbol{\beta}) + \lambda\boldsymbol{\beta}^T\boldsymbol{\beta}.
 $$
 
 Мы уже знаем производную первого слагаемого:
 
 $$
-\frac{\partial}{\partial\boldsymbol{\beta}} \left[ (\mathbf y - X\boldsymbol{\beta})^T (\mathbf y - X\boldsymbol{\beta}) \right] = -2X^T\mathbf y + 2X^TX\boldsymbol{\beta}
+\frac{\partial}{\partial\boldsymbol{\beta}}\left[(\mathbf{y} - X\boldsymbol{\beta})^T(\mathbf{y} - X\boldsymbol{\beta})\right] = -2X^T\mathbf{y} + 2X^TX\boldsymbol{\beta}.
 $$
 
-Для второго слагаемого $\boldsymbol{\beta}^T\boldsymbol{\beta} = \beta_0^2 + \beta_1^2 + \dots + \beta_p^2$, производная:
+Для второго слагаемого:
 
 $$
-\frac{\partial}{\partial\boldsymbol{\beta}} (\boldsymbol{\beta}^T\boldsymbol{\beta}) = 2\boldsymbol{\beta}
+\boldsymbol{\beta}^T\boldsymbol{\beta} = \beta_0^2 + \beta_1^2 + \dots + \beta_p^2.
+$$
+
+Производная:
+
+$$
+\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^T\boldsymbol{\beta}) = 2\boldsymbol{\beta}.
 $$
 
 Поэтому:
 
 $$
-\frac{\partial L_{L2}}{\partial\boldsymbol{\beta}} = -2X^T\mathbf y + 2X^TX\boldsymbol{\beta} + 2\lambda\boldsymbol{\beta}
+\frac{\partial L_{L2}}{\partial\boldsymbol{\beta}} = -2X^T\mathbf{y} + 2X^TX\boldsymbol{\beta} + 2\lambda\boldsymbol{\beta}.
 $$
 
 Приравниваем к нулю:
 
 $$
--2X^T\mathbf y + 2X^TX\boldsymbol{\beta} + 2\lambda\boldsymbol{\beta} = 0
+-2X^T\mathbf{y} + 2X^TX\boldsymbol{\beta} + 2\lambda\boldsymbol{\beta} = 0.
 $$
 
-Делим на 2:
+Делим на $2$:
 
 $$
--X^T\mathbf y + X^TX\boldsymbol{\beta} + \lambda\boldsymbol{\beta} = 0
+-X^T\mathbf{y} + X^TX\boldsymbol{\beta} + \lambda\boldsymbol{\beta} = 0.
 $$
 
-Переносим $X^T\mathbf y$ вправо:
+Переносим $X^T\mathbf{y}$ вправо:
 
 $$
-X^TX\boldsymbol{\beta} + \lambda\boldsymbol{\beta} = X^T\mathbf y
+X^TX\boldsymbol{\beta} + \lambda\boldsymbol{\beta} = X^T\mathbf{y}.
 $$
 
 Выносим $\boldsymbol{\beta}$:
 
 $$
-(X^TX + \lambda I)\boldsymbol{\beta} = X^T\mathbf y
+(X^TX + \lambda I)\boldsymbol{\beta} = X^T\mathbf{y}.
 $$
 
 Умножаем обе части слева на обратную матрицу:
 
 $$
-\boxed{\hat{\boldsymbol{\beta}}_{L2} = (X^TX + \lambda I)^{-1}X^T\mathbf y}
+\boxed{\hat{\boldsymbol{\beta}}_{L2} = (X^TX + \lambda I)^{-1}X^T\mathbf{y}}.
 $$
 
-Это аналитическое решение L2-регрессии (гребневой регрессии или Ridge Regression). Главное изменение — к матрице $X^TX$ добавляется $\lambda I$.
+Это аналитическое решение L2-регрессии (гребневой регрессии или Ridge Regression).
+По сравнению с обычной линейной регрессией:
+
+$$
+\hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf{y},
+$$
+
+получаем:
+
+$$
+\boxed{\hat{\boldsymbol{\beta}}_{L2} = (X^TX + \lambda I)^{-1}X^T\mathbf{y}}.
+$$
+
+Главное изменение — к матрице $X^TX$ добавляется $\lambda I$.
 
 #### L1-регуляризация
 
 При L1-регуляризации используется сумма модулей коэффициентов:
 
 $$
-L_{L1}(\boldsymbol{\beta}) = \|\mathbf y - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_1
+L_{L1}(\boldsymbol{\beta}) = \|\mathbf{y} - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_1.
 $$
 
 При этом:
 
 $$
-\|\boldsymbol{\beta}\|_1 = |\beta_0| + |\beta_1| + \dots + |\beta_p|
+\|\boldsymbol{\beta}\|_1 = |\beta_0| + |\beta_1| + \dots + |\beta_p|.
 $$
 
 Обычно $\beta_0$ также исключают из штрафа.
 
 Главное отличие L1 от L2:
-- **L2:** $\lambda\sum_j \beta_j^2$
-- **L1:** $\lambda\sum_j |\beta_j|$
 
-При L1 функция $|\beta|$ имеет излом в точке $\beta = 0$. Из-за этого оптимальное решение может иметь коэффициенты, которые точно равны нулю: $\beta_j = 0$.
-
-Например, модель $\hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3$ после L1-регуляризации может иметь вид:
+**L2:**
 
 $$
-\hat y = \beta_0 + 2.1x_1 + 0x_2 + 0.7x_3
+\lambda\sum_{j}\beta_j^2.
 $$
 
-Тогда признак $x_2$ фактически исключается из модели. Поэтому L1-регуляризация используется не только для уменьшения переобучения, но и для автоматического отбора признаков.
+**L1:**
 
-В общем случае для L1-регуляризации нет простой формулы, аналогичной $(X^TX + \lambda I)^{-1}X^T\mathbf y$. Задача обычно решается численными методами оптимизации. На практике L1-регрессия часто называется **Lasso**.
+$$
+\lambda\sum_{j}|\beta_j|.
+$$
+
+При L1 функция $|\beta|$ имеет излом в точке:
+
+$$
+\beta = 0.
+$$
+
+Из-за этого оптимальное решение может иметь коэффициенты, которые точно равны нулю:
+
+$$
+\beta_j = 0.
+$$
+
+Например, модель:
+
+$$
+\hat{y} = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3.
+$$
+
+После L1-регуляризации может иметь вид:
+
+$$
+\hat{y} = \beta_0 + 2.1x_1 + 0x_2 + 0.7x_3.
+$$
+
+Тогда признак $x_2$ фактически исключается из модели.
+Поэтому L1-регуляризация используется не только для уменьшения переобучения, но и для автоматического отбора признаков.
+
+В общем случае для L1-регуляризации нет простой формулы, аналогичной
+
+$$
+(X^TX + \lambda I)^{-1}X^T\mathbf{y}.
+$$
+
+Задача обычно решается численными методами оптимизации.
+На практике L1-регрессия часто называется **Lasso**.
 
 > [!success] Применение L1+L2 регуляризации или ElasticNet
 > - Когда не уверены, что выбрать.
@@ -325,32 +429,46 @@ $$
 
 ### 3. Почему L1-регуляризация используется для отбора признаков? Почему после обучения модели остается много весов, равных 0?
 
-Главное свойство L1-регуляризации заключается в том, что она может сделать некоторые коэффициенты модели точно равными нулю: $\beta_j = 0$.
+Главное свойство L1-регуляризации заключается в том, что она может сделать некоторые коэффициенты модели точно равными нулю:
+
+$$
+\beta_j = 0.
+$$
 
 Рассмотрим функцию потерь:
 
 $$
-L_1(\boldsymbol{\beta}) = \|\mathbf y - X\boldsymbol{\beta}\|_2^2 + \lambda\sum_{j=1}^{p}|\beta_j|
+L_1(\boldsymbol{\beta}) = \|\mathbf{y} - X\boldsymbol{\beta}\|_2^2 + \lambda\sum_{j=1}^{p}|\beta_j|.
 $$
 
-Если некоторый признак не оказывает существенного влияния на целевую переменную, то его коэффициент может стать равным $\beta_j = 0$. Тогда соответствующий признак фактически исчезает из модели.
+Если некоторый признак не оказывает существенного влияния на целевую переменную, то его коэффициент может стать равным:
+
+$$
+\beta_j = 0.
+$$
+
+Тогда соответствующий признак фактически исчезает из модели.
 
 Например, исходная модель:
+
 $$
-\hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 + \beta_4x_4
+\hat{y} = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 + \beta_4x_4.
 $$
 
 После L1-регуляризации может получиться:
+
 $$
-\hat y = \beta_0 + 2.1x_1 + 0x_2 + 0.7x_3 + 0x_4
+\hat{y} = \beta_0 + 2.1x_1 + 0x_2 + 0.7x_3 + 0x_4.
 $$
 
 То есть:
+
 $$
-\hat y = \beta_0 + 2.1x_1 + 0.7x_3
+\hat{y} = \beta_0 + 2.1x_1 + 0.7x_3.
 $$
 
-Признаки $x_2$ и $x_4$ модель фактически не использует. Таким образом, L1-регуляризация одновременно выполняет две задачи:
+Признаки $x_2$ и $x_4$ модель фактически не использует.
+Таким образом, L1-регуляризация одновременно выполняет две задачи:
 1. Уменьшает переобучение.
 2. Выполняет автоматический отбор признаков.
 
@@ -359,37 +477,73 @@ $$
 Рассмотрим простейший случай одного коэффициента:
 
 $$
-L(\beta) = \text{ошибка} + \lambda|\beta|
+L(\beta) = \text{ошибка} + \lambda|\beta|.
 $$
 
-Штраф $|\beta|$ имеет излом в точке $\beta = 0$. Графически функция $|\beta|$ имеет форму буквы V. Из-за этого оптимум достаточно часто оказывается точно в точке $\beta = 0$.
+Штраф $|\beta|$ имеет излом в точке:
 
-Для сравнения, при L2-регуляризации штраф имеет вид $\lambda\beta^2$. Он плавный: $\frac{d}{d\beta}\beta^2 = 2\beta$. L2 обычно уменьшает коэффициенты, но не заставляет их становиться ровно нулём.
+$$
+\beta = 0.
+$$
+
+Графически функция $|\beta|$ имеет форму буквы V.
+Из-за этого оптимум достаточно часто оказывается точно в точке $\beta = 0$.
+
+Для сравнения, при L2-регуляризации штраф имеет вид:
+
+$$
+\lambda\beta^2.
+$$
+
+Он плавный:
+
+$$
+\frac{d}{d\beta}\beta^2 = 2\beta.
+$$
+
+L2 обычно уменьшает коэффициенты, но не заставляет их становиться ровно нулём.
 
 Поэтому:
+
 $$
 \boxed{\text{L1} \Rightarrow \text{разреженные коэффициенты}}
 $$
+
 а
+
 $$
-\boxed{\text{L2} \Rightarrow \text{маленькие коэффициенты}}
+\boxed{\text{L2} \Rightarrow \text{маленькие коэффициенты}}.
 $$
 
 Именно поэтому L1-регуляризация хорошо подходит для отбора признаков.
 
 ---
 
-### 4. Как можно использовать одни и те же модели, но при этом обеспечить возможность учета нелинейных зависимостей?
+### 4. Объясните, как можно использовать одни и те же модели (линейная регрессия, гребневая регрессия и т. д.), но при этом обеспечить возможность учета нелинейных зависимостей.
 
-Линейная регрессия называется линейной прежде всего по параметрам $\boldsymbol{\beta}$, а не обязательно по исходным признакам. Это позволяет преобразовать исходные признаки с помощью некоторого отображения $\phi(\mathbf x)$, а затем использовать ту же линейную модель.
+#### Как учитывать нелинейные зависимости, используя те же модели?
 
-Пусть исходный признак — $x$. Вместо модели $\hat y = \beta_0 + \beta_1x$ можно использовать:
+Линейная регрессия называется линейной прежде всего по параметрам $\boldsymbol{\beta}$, а не обязательно по исходным признакам.
+Это позволяет преобразовать исходные признаки с помощью некоторого отображения $\phi(\mathbf{x})$, а затем использовать ту же линейную модель.
+
+Пусть исходный признак — $x$.
+Вместо модели
 
 $$
-\hat y = \beta_0 + \beta_1x + \beta_2x^2 + \beta_3x^3
+\hat{y} = \beta_0 + \beta_1x
 $$
 
-На первый взгляд это нелинейная зависимость от $x$, однако модель остаётся линейной относительно коэффициентов $\beta_0, \beta_1, \beta_2, \beta_3$.
+можно использовать:
+
+$$
+\hat{y} = \beta_0 + \beta_1x + \beta_2x^2 + \beta_3x^3.
+$$
+
+На первый взгляд это нелинейная зависимость от $x$, однако модель остаётся линейной относительно коэффициентов:
+
+$$
+\beta_0, \beta_1, \beta_2, \beta_3.
+$$
 
 Можно ввести новые признаки:
 
@@ -400,13 +554,13 @@ $$
 x \\
 x^2 \\
 x^3
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
 Тогда:
 
 $$
-\hat y =
+\hat{y} =
 \begin{pmatrix}
 1 & x & x^2 & x^3
 \end{pmatrix}
@@ -415,16 +569,16 @@ $$
 \beta_1 \\
 \beta_2 \\
 \beta_3
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
 То есть снова получаем обычную линейную регрессию:
 
 $$
-\boxed{\hat{\mathbf y} = \Phi\boldsymbol{\beta}}
+\boxed{\hat{\mathbf{y}} = \Phi\boldsymbol{\beta}}.
 $$
 
-где $\Phi$ — матрица новых признаков:
+Где $\Phi$ — матрица новых признаков:
 
 $$
 \Phi =
@@ -433,40 +587,64 @@ $$
 1 & x_2 & x_2^2 & x_2^3 \\
 \vdots & \vdots & \vdots & \vdots \\
 1 & x_n & x_n^2 & x_n^3
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
 После такого преобразования можно использовать точно тот же метод наименьших квадратов:
 
 $$
-\boxed{\hat{\boldsymbol{\beta}} = (\Phi^T\Phi)^{-1}\Phi^T\mathbf y}
+\boxed{\hat{\boldsymbol{\beta}} = (\Phi^T\Phi)^{-1}\Phi^T\mathbf{y}}.
 $$
 
 Также можно применять регуляризацию:
 
 **L2:**
+
 $$
-\boxed{\hat{\boldsymbol{\beta}}_{L2} = (\Phi^T\Phi + \lambda I)^{-1}\Phi^T\mathbf y}
+\boxed{\hat{\boldsymbol{\beta}}_{L2} = (\Phi^T\Phi + \lambda I)^{-1}\Phi^T\mathbf{y}}.
 $$
 
 **L1:**
+
 $$
-\boxed{\hat{\boldsymbol{\beta}}_{L1} = \arg\min_{\boldsymbol{\beta}} \left[ \|\mathbf y - \Phi\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_1 \right]}
+\boxed{\hat{\boldsymbol{\beta}}_{L1} = \arg\min_{\boldsymbol{\beta}}\left[\|\mathbf{y} - \Phi\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_1\right]}.
 $$
 
 Таким образом, общая идея состоит в следующем:
 
 $$
-\boxed{\text{исходные признаки} \longrightarrow \text{преобразованные признаки} \longrightarrow \text{та же модель}}
+\boxed{\text{исходные признаки} \longrightarrow \text{преобразованные признаки} \longrightarrow \text{та же модель}}.
 $$
 
 Например:
-- $x \longrightarrow (x, x^2, x^3)$ позволяет учитывать полиномиальную зависимость;
-- $x \longrightarrow (\log x, \exp(x), \sqrt{x})$ позволяет учитывать степенные и экспоненциальные зависимости;
-- $x \longrightarrow (\sin x, \cos x)$ позволяет учитывать периодические зависимости;
-- $(x_1, x_2) \longrightarrow (x_1, x_2, x_1^2, x_2^2, x_1x_2)$ позволяет учитывать нелинейность и взаимодействие признаков.
 
-Это называется инженерией признаков (feature engineering) или использованием базисных функций. Главная идея: мы можем сделать зависимость от исходных признаков нелинейной, но оставить модель линейной относительно параметров $\boldsymbol{\beta}$.
+$$
+x \longrightarrow (x, x^2, x^3)
+$$
+
+позволяет учитывать полиномиальную зависимость;
+
+$$
+x \longrightarrow (\log x, \exp(x), \sqrt{x})
+$$
+
+позволяет учитывать степенные и экспоненциальные зависимости;
+
+$$
+x \longrightarrow (\sin x, \cos x)
+$$
+
+позволяет учитывать периодические зависимости;
+
+$$
+(x_1, x_2) \longrightarrow (x_1, x_2, x_1^2, x_2^2, x_1x_2)
+$$
+
+позволяет учитывать нелинейность и взаимодействие признаков.
+
+Это называется инженерией признаков (feature engineering) или использованием базисных функций.
+Главная идея: мы можем сделать зависимость от исходных признаков нелинейной, но оставить модель линейной относительно параметров $\boldsymbol{\beta}$.
+Поэтому одна и та же линейная модель может использоваться для гораздо более сложных зависимостей.
 
 ---
 
@@ -474,7 +652,7 @@ $$
 
 | Метод | Функция потерь | Результат |
 | --- | --- | --- |
-| Обычная линейная регрессия | $\|\mathbf y - X\boldsymbol{\beta}\|_2^2$ | $\hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf y$ |
-| L2 / Ridge | $\|\mathbf y - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_2^2$ | $\hat{\boldsymbol{\beta}} = (X^TX + \lambda I)^{-1}X^T\mathbf y$ |
-| L1 / Lasso | $\|\mathbf y - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_1$ | Численная оптимизация |
+| Обычная линейная регрессия | $\|\mathbf{y} - X\boldsymbol{\beta}\|_2^2$ | $\hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf{y}$ |
+| L2 / Ridge | $\|\mathbf{y} - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_2^2$ | $\hat{\boldsymbol{\beta}} = (X^TX + \lambda I)^{-1}X^T\mathbf{y}$ |
+| L1 / Lasso | $\|\mathbf{y} - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_1$ | Численная оптимизация |
 | Нелинейные зависимости | Используем преобразование $\phi(X)$ | Та же модель для новых признаков |

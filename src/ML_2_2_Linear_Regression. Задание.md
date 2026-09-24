@@ -262,147 +262,133 @@ $$
 $$
 
 
-### 2. Какие изменения произойдут в решении при добавлении L1- и L2-регуляризации к функции потерь?
+# 2. Какие изменения произойдут в решении при добавлении L1- и L2-регуляризации к функции потерь?
 
 Регуляризация добавляется к функции потерь для того, чтобы ограничить величину коэффициентов модели и уменьшить переобучение.
 
 Без регуляризации функция потерь:
 
-$$ L(\boldsymbol{\beta}) = \|\mathbf y-X\boldsymbol{\beta}\|_2^2 $$
+$$
+L(\boldsymbol{\beta}) = \|\mathbf y-X\boldsymbol{\beta}\|_2^2
+$$
 
 При регуляризации к ней добавляется штраф за величину коэффициентов.
 
-Важно: обычно свободный коэффициент $\beta_0$ не регуляризуют. Поэтому ниже штраф применяется только к весам признаков $\beta_1,\dots,\beta_p$.
+> **Важно:** обычно свободный коэффициент $\beta_0$ не регуляризуют. Поэтому ниже штраф применяется только к весам признаков $\beta_1,\dots,\beta_p$.
 
-
-## L2-регуляризация
+### L2-регуляризация
 
 При L2-регуляризации к функции потерь добавляется штраф за большие значения коэффициентов:
 
-$$ L_{L2}(\boldsymbol{\beta}) = \|\mathbf{y} - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_2^2 $$
+$$
+L_{L2}(\boldsymbol{\beta}) = \|\mathbf{y} - X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_2^2
+$$
 
-
-
-Здесь:
-
-$$ \lambda\geq0 $$
-
-- параметр регуляризации.
+Здесь $\lambda \geq 0$ — параметр регуляризации.
 
 Норма вектора в квадрате:
 
-$$ \|\boldsymbol{\beta}\|_2^2 = \beta_0^2+\beta_1^2+\dots+\beta_p^2 $$
+$$
+\|\boldsymbol{\beta}\|_2^2 = \beta_1^2+\dots+\beta_p^2
+$$
 
-Обычно свободный коэффициент $ \beta_0 $ не регуляризуют. В этом случае штраф применяется только к $ \beta_1,\dots,\beta_p $
+Обычно свободный коэффициент $\beta_0$ не регуляризуют. В этом случае штраф применяется только к $\beta_1,\dots,\beta_p$. Если для простоты записать штраф через весь вектор $\boldsymbol{\beta}$, получаем:
 
-Если для простоты записать штраф через весь вектор $ \boldsymbol{\beta} $, получаем:
-
-$$ L_{L2}(\boldsymbol{\beta}) = (\mathbf y-X\boldsymbol{\beta})^T (\mathbf y-X\boldsymbol{\beta}) + \lambda\boldsymbol{\beta}^T\boldsymbol{\beta} $$
+$$
+L_{L2}(\boldsymbol{\beta}) = (\mathbf y-X\boldsymbol{\beta})^T (\mathbf y-X\boldsymbol{\beta}) + \lambda\boldsymbol{\beta}^T\boldsymbol{\beta}
+$$
 
 Мы уже знаем производную первого слагаемого:
 
-$$ \frac{\partial}{\partial\boldsymbol{\beta}} \left[ (\mathbf y-X\boldsymbol{\beta})^T (\mathbf y-X\boldsymbol{\beta}) \right] = -2X^T\mathbf y + 2X^TX\boldsymbol{\beta} $$
+$$
+\frac{\partial}{\partial\boldsymbol{\beta}} \left[ (\mathbf y-X\boldsymbol{\beta})^T (\mathbf y-X\boldsymbol{\beta}) \right] = -2X^T\mathbf y + 2X^TX\boldsymbol{\beta}
+$$
 
 Для второго слагаемого:
 
-$$ \boldsymbol{\beta}^T\boldsymbol{\beta} = \beta_0^2+\beta_1^2+\dots+\beta_p^2 $$
-
-Производная:
-
-$$ \frac{\partial}{\partial\boldsymbol{\beta}} (\boldsymbol{\beta}^T\boldsymbol{\beta}) = 2\boldsymbol{\beta} $$
+$$
+\frac{\partial}{\partial\boldsymbol{\beta}} (\boldsymbol{\beta}^T\boldsymbol{\beta}) = 2\boldsymbol{\beta}
+$$
 
 Поэтому:
 
-$$ \frac{\partial L_{L2}}{\partial\boldsymbol{\beta}} = -2X^T\mathbf y + 2X^TX\boldsymbol{\beta} + 2\lambda\boldsymbol{\beta} $$
+$$
+\frac{\partial L_{L2}}{\partial\boldsymbol{\beta}} = -2X^T\mathbf y + 2X^TX\boldsymbol{\beta} + 2\lambda\boldsymbol{\beta}
+$$
 
 Приравниваем к нулю:
 
-$$ -2X^T\mathbf y + 2X^TX\boldsymbol{\beta} + 2\lambda\boldsymbol{\beta} = 0 $$
+$$
+-2X^T\mathbf y + 2X^TX\boldsymbol{\beta} + 2\lambda\boldsymbol{\beta} = 0
+$$
 
 Делим на $2$:
 
-$$ -X^T\mathbf y + X^TX\boldsymbol{\beta} + \lambda\boldsymbol{\beta} = 0 $$
+$$
+-X^T\mathbf y + X^TX\boldsymbol{\beta} + \lambda\boldsymbol{\beta} = 0
+$$
 
-Переносим $ X^T\mathbf y $ вправо:
+Переносим $X^T\mathbf y$ вправо:
 
 $$
-X^TX\boldsymbol{\beta} + \lambda\boldsymbol{\beta} = X^T\mathbf y $$
+X^TX\boldsymbol{\beta} + \lambda\boldsymbol{\beta} = X^T\mathbf y
+$$
 
-Выносим $ \boldsymbol{\beta} $:
+Выносим $\boldsymbol{\beta}$:
 
-$$ (X^TX+\lambda I)\boldsymbol{\beta} = X^T\mathbf y $$
+$$
+(X^TX+\lambda I)\boldsymbol{\beta} = X^T\mathbf y
+$$
 
 Умножаем обе части слева на обратную матрицу:
 
-$$ \boxed{ \hat{\boldsymbol{\beta}}_{L2} = (X^TX+\lambda I)^{-1}X^T\mathbf y } $$
+$$
+\hat{\boldsymbol{\beta}}_{L2} = (X^TX+\lambda I)^{-1}X^T\mathbf y
+$$
 
-Это аналитическое решение **L2-регрессии (гребневой регрессии или Ridge Regression)**.
+Это аналитическое решение L2-регрессии (гребневой регрессии или Ridge Regression). Главное изменение — к матрице $X^TX$ добавляется $\lambda I$.
 
-По сравнению с обычной линейной регрессией:
-
-$$ \hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf y, $$
-
-получаем:
-
-$$ \boxed{ \hat{\boldsymbol{\beta}}_{L2} = (X^TX+\lambda I)^{-1}X^T\mathbf y } $$
-
-Главное изменение — к матрице $X^TX$ добавляется $\lambda I$.
-
-
-## L1-регуляризация
+### L1-регуляризация
 
 При L1-регуляризации используется сумма модулей коэффициентов:
 
-$$ L_{L1}(\boldsymbol{\beta}) = \|\mathbf y-X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_1 $$
+$$
+L_{L1}(\boldsymbol{\beta}) = \|\mathbf y-X\boldsymbol{\beta}\|_2^2 + \lambda\|\boldsymbol{\beta}\|_1
+$$
 
 При этом:
 
-$$ \|\boldsymbol{\beta}\|_1 = |\beta_0|+|\beta_1|+\dots+|\beta_p| $$
+$$
+\|\boldsymbol{\beta}\|_1 = |\beta_1|+\dots+|\beta_p|
+$$
 
 Обычно $\beta_0$ также исключают из штрафа.
 
 Главное отличие L1 от L2:
+- **L2:** $\lambda\sum_j\beta_j^2$
+- **L1:** $\lambda\sum_j|\beta_j|$
 
- L2: 
-
- $$ \qquad \lambda\sum_j\beta_j^2 $$
-
-L1:
-
-$$ \qquad \lambda\sum_j|\beta_j| $$
-
-При L1-функция $|\beta|$ имеет излом в точке:
-
-$$ \beta=0 $$
-
-Из-за этого оптимальное решение может иметь коэффициенты, которые **точно равны нулю**:
-
-$$ \beta_j=0 $$
+При L1-функция $|\beta|$ имеет излом в точке $\beta=0$. Из-за этого оптимальное решение может иметь коэффициенты, которые точно равны нулю: $\beta_j=0$. 
 
 Например, модель:
 
-$$ \hat y = \beta_0+\beta_1x_1+\beta_2x_2+\beta_3x_3 $$
+$$
+\hat y = \beta_0+\beta_1x_1+\beta_2x_2+\beta_3x_3
+$$
 
 после L1-регуляризации может иметь вид:
 
-$$\hat y =\beta_0+2.1x_1+0x_2+0.7x_3 $$
+$$
+\hat y = \beta_0+2.1x_1+0x_2+0.7x_3
+$$
 
-Тогда признак $x_2$ фактически исключается из модели.
+Тогда признак $x_2$ фактически исключается из модели. Поэтому L1-регуляризация используется не только для уменьшения переобучения, но и для автоматического отбора признаков.
 
-Поэтому L1-регуляризация используется не только для уменьшения переобучения, но и для **автоматического отбора признаков**.
+В общем случае для L1-регуляризации нет простой формулы, аналогичной $(X^TX+\lambda I)^{-1}X^T\mathbf y$. Задача обычно решается численными методами оптимизации. На практике L1-регрессия часто называется **Lasso**.
 
-В общем случае для L1-регуляризации **нет простой формулы**, аналогичной
-
-$$ (X^TX+\lambda I)^{-1}X^T\mathbf y $$
-
-Задача обычно решается численными методами оптимизации.
-
-На практике L1-регрессия часто называется **Lasso**.
-
-
-> [!success]- Применение L1+L2 регуляризации или ElasticNet 
- >   - Когда не уверены, что выбрать
- >   - Когда есть группы коррелированных признаков (хотите отобрать группы, а не отдельные признаки)
+> [!success] Применение L1+L2 регуляризации или ElasticNet
+> - Когда не уверены, что выбрать.
+> - Когда есть группы коррелированных признаков (хотите отобрать группы, а не отдельные признаки).
 
 # 3. Почему L1-регуляризация используется для отбора признаков?  Почему после обучения модели остается много весов, равных 0?
 

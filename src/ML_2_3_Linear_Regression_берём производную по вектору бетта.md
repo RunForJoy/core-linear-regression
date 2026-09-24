@@ -171,7 +171,7 @@ $$
 Таким образом, два средних слагаемых вместе дают:
 
 $$
--X^T\mathbf y-X^T\mathbf y=-2X^T\mathbf y
+-X^T\mathbf{y}-X^T\mathbf{y}=-2X^T\mathbf{y}
 $$
 
 ---
@@ -270,12 +270,6 @@ $$
 $$
 \boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^TA\boldsymbol{\beta})=(A+A^T)\boldsymbol{\beta}}
 $$
-
-В матричной форме это:
-
-```math
-\boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^TA\boldsymbol{\beta})=(A+A^T)\boldsymbol{\beta}}
-```
 
 
 > [!success]- почему $(A+A^T)\boldsymbol{\beta}$?

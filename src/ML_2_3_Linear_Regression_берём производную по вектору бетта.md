@@ -4,20 +4,13 @@ Ctrl + Shift + V
 ### Берём производную по вектору бетта 
 
 $$
-\boxed{
-L(\boldsymbol{\beta})
-=
-\mathbf y^T\mathbf y
--\mathbf y^TX\boldsymbol{\beta}
--\boldsymbol{\beta}^TX^T\mathbf y
-+\boldsymbol{\beta}^TX^TX\boldsymbol{\beta}
-}
+\boxed{L(\boldsymbol{\beta})=\mathbf y^T\mathbf y-\mathbf y^TX\boldsymbol{\beta}-\boldsymbol{\beta}^TX^T\mathbf y+\boldsymbol{\beta}TX^TX\boldsymbol{\beta}}
 $$
 
 Функция зависит сразу от нескольких переменных:
 
 $$
-\beta_0,\beta_1,\dots,\beta_p.
+\beta_0,\beta_1,\dots,\beta_p
 $$
 
 Поэтому производная по вектору $\boldsymbol{\beta}$ — это вектор частных производных:

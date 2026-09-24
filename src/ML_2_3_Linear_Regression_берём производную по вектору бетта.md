@@ -210,6 +210,10 @@ $$
 \boldsymbol{\beta}=\begin{pmatrix}\beta_1\\\beta_2\end{pmatrix},\qquadA=\begin{pmatrix}a&b\\c&d\end{pmatrix}
 $$
 
+$$
+\boldsymbol{\beta}=\begin{pmatrix}\beta_1\\\beta_2\end{pmatrix},\qquad{}A=\begin{pmatrix}a&b\\c&d\end{pmatrix}
+$$
+
 Тогда:
 
 $$

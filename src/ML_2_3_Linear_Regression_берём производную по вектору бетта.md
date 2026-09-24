@@ -15,9 +15,12 @@ $$
 
 Поэтому производная по вектору $\boldsymbol{\beta}$ — это вектор частных производных:
 
+
 $$
-\frac{\partial L}{\partial\boldsymbol{\beta}}=\begin{pmatrix}\frac{\partial L}{\partial\beta_0}\\\frac{\partial L}{\partial\beta_1}\\\vdots\\\frac{\partial L}\partial\beta_p}\end{pmatrix}
+\frac{\partial L}{\partial\boldsymbol{\beta}}=\begin{pmatrix}\frac{\partial L}{\partial\beta_0}\\\frac{\partial L}{\partial\beta_1}\\\vdots\\\frac{\partial L}{\partial\beta_p}\end{pmatrix}
 $$
+
+
 
 Рассмотрим каждое слагаемое функции $L$ отдельно.
 

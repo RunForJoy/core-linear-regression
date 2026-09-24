@@ -264,16 +264,18 @@ $$
 \boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^TA\boldsymbol{\beta})=\begin{pmatrix}2a\beta_1+(b+c)\beta_2\\(b+c)\beta_1+2d\beta_2\end{pmatrix}}
 $$
 
+
 В матричной форме это:
 
 $$
 \boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^TA\boldsymbol{\beta})=(A+A^T)\boldsymbol{\beta}}
 $$
 
-$$
-\frac{\partial}{\partial \boldsymbol{\beta}}
-\left(\boldsymbol{\beta}^{T} A \boldsymbol{\beta}\right)=(A+A^{T})\boldsymbol{\beta}
-$$
+В матричной форме это:
+
+```math
+\boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^TA\boldsymbol{\beta})=(A+A^T)\boldsymbol{\beta}}
+```
 
 
 > [!success]- почему $(A+A^T)\boldsymbol{\beta}$?

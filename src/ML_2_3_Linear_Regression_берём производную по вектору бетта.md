@@ -207,10 +207,6 @@ $$
 Пусть:
 
 $$
-\boldsymbol{\beta}=\begin{pmatrix}\beta_1\\\beta_2\end{pmatrix},\qquadA=\begin{pmatrix}a&b\\c&d\end{pmatrix}
-$$
-
-$$
 \boldsymbol{\beta}=\begin{pmatrix}\beta_1\\\beta_2\end{pmatrix},\qquad{}A=\begin{pmatrix}a&b\\c&d\end{pmatrix}
 $$
 
@@ -268,11 +264,11 @@ $$
 \boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^TA\boldsymbol{\beta})=\begin{pmatrix}2a\beta_1+(b+c)\beta_2\\(b+c)\beta_1+2d\beta_2\end{pmatrix}}
 $$
 
- В матричной форме это:  
- 
- $$ 
- \boxed{ \frac{\partial}{\partial\boldsymbol{\beta}} (\boldsymbol{\beta}^TA\boldsymbol{\beta})  =  (A+A^T)\boldsymbol{\beta}  } 
-  $$
+В матричной форме это:
+
+$$
+\boxed{\frac{\partial}{\partial\boldsymbol{\beta}}(\boldsymbol{\beta}^TA\boldsymbol{\beta})=(A+A^T)\boldsymbol{\beta}}
+$$
 
 > [!success]- почему $(A+A^T)\boldsymbol{\beta}$?
 >

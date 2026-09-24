@@ -269,7 +269,7 @@ $$
 Без регуляризации функция потерь:
 
 $$
-L(\boldsymbol{\beta}) = \|\mathbf{y} - X\boldsymbol{\beta}\|_2^2
+L(\mathbf{\beta}) = \lVert \mathbf{y} - X\mathbf{\beta} \rVert_2^2
 $$
 
 При регуляризации к ней добавляется штраф за величину коэффициентов.

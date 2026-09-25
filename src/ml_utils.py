@@ -5,12 +5,11 @@ import numpy as np
 def universal_styler(
     df,
     metric_type="min",
-    axis=0,  # Для основных таблиц по умолчанию поиск идет по вертикали
+    axis=0,
     subset=None,
     highlight_diff=False,
     col_train=None,
     col_test=None,
-    min_r2_threshold=0.40,
     return_metrics=False,
     top_n=1,
 ):
@@ -23,7 +22,7 @@ def universal_styler(
 
     working_df = df.copy()
 
-    # --- ЛОГИКА СТАБИЛЬНОСТИ (Поиск минимального разрыва Train/Test) ---
+    # определение самоц стабильной модели через поиск минимального разрыва Train/Test
     if (
         highlight_diff
         and col_train in working_df.columns
@@ -76,7 +75,6 @@ def universal_styler(
             axis=1,
         )
 
-    # --- СТАНДАРТНЫЙ ВЕРТИКАЛЬНЫЙ ПОИСК (axis=0) БЕЗ НАИВНЫХ МОДЕЛЕЙ ---
     styler = working_df.style.format(
         lambda x: f"{x:.3f}" if isinstance(x, (int, float)) else x
     )
@@ -122,24 +120,21 @@ def highlight_results(row, top_n=1, r2=True, mae=True, rmse=True):
     style_bad = "background-color: pink; color: darkred; font-weight: bold;"
     style_good = "background-color: lightgreen; color: darkgreen; font-weight: bold;"
 
-    # Подсвечиваем только если в названии строки есть "Test"
+    # подсветка только для метрик с меткой "Test"
     if "Test" in str(row.name):
         vals = row.to_numpy(dtype=float)
         sorted_indices = vals.argsort()
 
-        # Проверка для R2
         if "R2" in str(row.name) and r2:
             styles[sorted_indices[0]] = style_bad
             for i in range(1, top_n + 1):
                 styles[sorted_indices[-i]] = style_good
 
-        # Проверка для MAE
         elif "MAE" in str(row.name) and mae:
             styles[sorted_indices[-1]] = style_bad
             for i in range(top_n):
                 styles[sorted_indices[i]] = style_good
 
-        # Проверка для RMSE
         elif "RMSE" in str(row.name) and rmse:
             styles[sorted_indices[-1]] = style_bad
             for i in range(top_n):
